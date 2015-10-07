@@ -82,7 +82,15 @@ namespace easy_control_c_sharp.Backend
         {
             int index = -1;
             // auto load global pose
-            List<PoseCombination> returnCollection = _poseMap[_globalPoseString];
+            List<PoseCombination> returnCollection;
+            if (_poseMap.ContainsKey(_globalPoseString))
+            {
+                returnCollection = _poseMap[_globalPoseString];
+            }
+            else
+            {
+                returnCollection = new List<PoseCombination>();
+            }
             foreach (KeyValuePair<string, List<PoseCombination>> collection in _poseMap)
             {
                 index = window.IndexOf(collection.Key);
@@ -96,7 +104,10 @@ namespace easy_control_c_sharp.Backend
             // 如果焦點視窗沒有在清單上，則假設他在系統上(執行系統上的手勢)
             if (index == -1)
             {
-                returnCollection.InsertRange(returnCollection.Count, _poseMap[_onSystemString]);
+                if (_poseMap.ContainsKey(_onSystemString))
+                {
+                    returnCollection.InsertRange(returnCollection.Count, _poseMap[_onSystemString]);
+                }
             }
 
             return returnCollection;
