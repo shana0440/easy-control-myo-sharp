@@ -7,6 +7,7 @@ using MyoSharp.Poses;
 using MyoSharp.Communication;
 using MyoSharp.Device;
 using MyoSharp.Exceptions;
+using System.Runtime.InteropServices; // use DllImport
 
 namespace easy_control_c_sharp.Backend
 {
@@ -101,8 +102,38 @@ namespace easy_control_c_sharp.Backend
         {
             if (_onReceive)
             {
-
+                _poseManager.FilterPose(pose);
             }
         }
+
+        public void ReceiveStart()
+        {
+            _onReceive = true;
+            IntPtr selectedWindow = GetForegroundWindow();
+            string selectedWindowTitle = GetWindowTitle(selectedWindow, IntPtr.Zero);
+            _poseManager.SetFocussWindow(selectedWindowTitle);
+            Console.WriteLine("focus on {0} window!", selectedWindowTitle);
+            Console.WriteLine("Start receive!");
+        }
+
+        public void ReceiveOver()
+        {
+            _onReceive = false;
+            _poseManager.ReceiveOver();
+            Console.WriteLine("Receive over!");
+        }
+
+        private string GetWindowTitle(IntPtr hWnd, IntPtr lParam)
+        {
+            var sb = new StringBuilder(255);
+            GetWindowText(hWnd, sb, sb.Capacity);
+            return sb.ToString();
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        static extern int GetWindowText(IntPtr hWnd, StringBuilder lpText, int nCount);
     }
 }
