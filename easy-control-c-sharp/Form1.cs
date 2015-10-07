@@ -15,6 +15,7 @@ namespace easy_control_c_sharp
         public Form1()
         {
             InitializeComponent();
+            MyoController controller = new MyoController();
         }
     }
 }
