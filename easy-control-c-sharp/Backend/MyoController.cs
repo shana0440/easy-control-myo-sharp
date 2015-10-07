@@ -98,13 +98,13 @@ namespace easy_control_c_sharp.Backend
 
         private void OnOrientationData(object sender, OrientationDataEventArgs e)
         {
-            //if (counter > 1)
-            //{
-            //    counter = 0;
-            //    WriteMessage(String.Format("Roll: {0}", e.Roll));
-            //    WriteMessage(String.Format("Pitch: {0}", e.Pitch));
-            //    WriteMessage(String.Format("Yaw: {0}", e.Yaw));
-            //}
+            const float PI = (float)System.Math.PI;
+
+            // convert the values to a 0-9 scale (for easier digestion/understanding)
+            var roll = (int)((e.Roll + PI) / (PI * 2.0f) * 10);
+            var pitch = (int)((e.Pitch + PI) / (PI * 2.0f) * 10);
+            var yaw = (int)((e.Yaw + PI) / (PI * 2.0f) * 10);
+            
         }
 
         private void ReceivePose(string pose)
