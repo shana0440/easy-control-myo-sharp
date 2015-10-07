@@ -8,7 +8,7 @@ using MyoSharp.Communication;
 using MyoSharp.Device;
 using MyoSharp.Exceptions;
 
-namespace easy_control_c_sharp
+namespace easy_control_c_sharp.Backend
 {
     public class MyoController
     {
