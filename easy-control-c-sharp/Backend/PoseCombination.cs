@@ -11,19 +11,20 @@ namespace easy_control_c_sharp.Backend
     public class PoseCombination
     {
         private List<string> _poseCombination = new List<string>();
-        private List<Tuple<byte, string>> _keys = new List<Tuple<byte, string>>();
+        private List<Tuple<VirtualKeyCode, PoseCombination.States>> _keys = new List<Tuple<VirtualKeyCode, PoseCombination.States>>();
         private bool _isComplete = false;
         private bool _isContiue = false;
         private int _index = 0;
+        public enum States { Press, Hold, Release }
 
         public void AddPose(string pose)
         {
             _poseCombination.Add(pose);
         }
 
-        public void AddKey(byte key, string state)
+        public void AddKey(VirtualKeyCode key, string state)
         {
-            _keys.Add(new Tuple<byte, string>(key, state));
+            _keys.Add(new Tuple<VirtualKeyCode, PoseCombination.States>(key, state));
         }
 
         public bool IsCompleted
@@ -106,8 +107,25 @@ namespace easy_control_c_sharp.Backend
 
         public void DoAction()
         {
-            InputSimulator.SimulateKeyDown(VirtualKeyCode.MENU);
-            InputSimulator.SimulateKeyDown(VirtualKeyCode.TAB);
+            foreach (Tuple<VirtualKeyCode, PoseCombination.States> item in _keys)
+            {
+                PoseCombination.States state = item.Item2;
+                VirtualKeyCode key = item.Item1;
+                switch (state)
+                {
+                    case States.Press:
+                        InputSimulator.SimulateKeyPress(key);
+                        break;
+                    case States.Hold:
+                        InputSimulator.SimulateKeyDown(key);
+                        break;
+                    case States.Release:
+                        InputSimulator.SimulateKeyUp(key);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
