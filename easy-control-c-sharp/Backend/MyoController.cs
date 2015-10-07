@@ -8,15 +8,17 @@ using MyoSharp.Communication;
 using MyoSharp.Device;
 using MyoSharp.Exceptions;
 using System.Runtime.InteropServices; // use DllImport
+using WindowsInput;
 
 namespace easy_control_c_sharp.Backend
 {
     public class MyoController
     {
-        IChannel _myoChannel;
-        IHub _myoHub;
-        bool _onReceive = false;
-        bool _isLock = false;
+        private IChannel _myoChannel;
+        private IHub _myoHub;
+        private bool _onReceive = false;
+        private bool _isLock = false;
+        private PoseManager _poseManager = new PoseManager();
         
         public MyoController()
         {
@@ -33,11 +35,20 @@ namespace easy_control_c_sharp.Backend
                 _myoHub.MyoConnected += new EventHandler<MyoEventArgs>(MyoConnected);
                 _myoHub.MyoDisconnected += new EventHandler<MyoEventArgs>(MyoDisconnected);
                 _myoChannel.StartListening();
+                AddDefaultPose();
             }
             catch (Exception)
             {
                 throw new Exception("Unable to find a Myo!");
             }
+        }
+
+        private void AddDefaultPose()
+        {
+            PoseCombination pose1 = new PoseCombination();
+            pose1.AddPose("FingersSpread");
+            pose1.AddKey(VirtualKeyCode.SPACE, "press");
+            _poseManager.AddPoseCombination("foobar2000", pose1);
         }
 
         private void MyoConnected(object sender, MyoEventArgs e)
