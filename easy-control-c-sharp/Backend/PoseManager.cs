@@ -9,7 +9,7 @@ namespace easy_control_c_sharp.Backend
     public class PoseManager
     {
         private Dictionary<string, List<PoseCombination>> _poseMap = new Dictionary<string, List<PoseCombination>>();
-        private List<PoseCombination> _filter;
+        private List<PoseCombination> _filter = new List<PoseCombination>();
         private string _globalPoseString = "globalPose";
         private string _onSystemString = "onSystem";
         private string _focusWindow;
@@ -56,6 +56,7 @@ namespace easy_control_c_sharp.Backend
                     hasCompleted = true;
                 }
             }
+            _filter = afterFilterPoseCollection;
         }
 
         public void ReceiveOver()
