@@ -83,15 +83,13 @@ namespace easy_control_c_sharp.Backend
             }
             else if (e.Myo.Pose == Pose.Rest)
             {
-                _onReceive = false;
-                Console.WriteLine("Receive over!");
+                ReceiveOver();
             }
             else
             {
                 if (!_onReceive)
                 {
-                    _onReceive = true;
-                    Console.WriteLine("Start receive!");
+                    ReceiveStart();
                 }
                 ReceivePose(e.Pose.ToString());
             }
