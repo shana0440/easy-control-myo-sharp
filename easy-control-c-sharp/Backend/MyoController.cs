@@ -47,7 +47,7 @@ namespace easy_control_c_sharp.Backend
         {
             PoseCombination pose1 = new PoseCombination();
             pose1.AddPose("FingersSpread");
-            pose1.AddKey(VirtualKeyCode.SPACE, "press");
+            pose1.AddKey(VirtualKeyCode.SPACE, PoseCombination.States.Press);
             _poseManager.AddPoseCombination("foobar2000", pose1);
         }
 
