@@ -22,7 +22,7 @@ namespace easy_control_c_sharp.Backend
             _poseCombination.Add(pose);
         }
 
-        public void AddKey(VirtualKeyCode key, string state)
+        public void AddKey(VirtualKeyCode key, PoseCombination.States state)
         {
             _keys.Add(new Tuple<VirtualKeyCode, PoseCombination.States>(key, state));
         }
