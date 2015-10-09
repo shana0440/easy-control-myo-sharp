@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace easy_control_c_sharp
+namespace easy_control_UI
 {
     static class Program
     {
@@ -14,9 +14,11 @@ namespace easy_control_c_sharp
         [STAThread]
         static void Main()
         {
+            Model model = new Model();
+            PresentationModel presentationModel = new PresentationModel(model);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new EasyControl(presentationModel));
         }
     }
 }
