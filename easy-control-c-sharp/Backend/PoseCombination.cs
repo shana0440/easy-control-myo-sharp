@@ -5,34 +5,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms; // SendKey
 using WindowsInput;
+using easy_control_c_sharp.common;
 
 namespace easy_control_c_sharp.backend
 {
     public class PoseCombination
     {
         private List<string> _poseCombination = new List<string>();
-        private List<Tuple<VirtualKeyCode, PoseCombination.States>> _keys = new List<Tuple<VirtualKeyCode, PoseCombination.States>>();
+        private List<Key> _keys = new List<Key>();
         private bool _isComplete = false;
         private bool _isContiue = false;
         private int _index = 0;
         public enum States { Press, Hold, Release }
 
+        /**
+         * 加入手勢
+         */
         public void AddPose(string pose)
         {
             _poseCombination.Add(pose);
         }
 
-        public void AddKey(VirtualKeyCode key, PoseCombination.States state)
+        /**
+         * 加入按鍵
+         */
+        public void AddKey(VirtualKeyCode key, KeyStates state)
         {
-            _keys.Add(new Tuple<VirtualKeyCode, PoseCombination.States>(key, state));
+            _keys.Add(new Key(key, state));
         }
 
+        /**
+         * 確認所有手勢是否都已經符合，代表使用者可能想執行這個動作
+         */
         public bool IsCompleted
         {
             get { return _isComplete; }
             set { _isComplete = value; }
         }
 
+        /**
+         * 這個手勢是否為持續性的功能
+         */
         public bool IsContiue
         {
             get { return _isContiue; }
@@ -61,11 +74,13 @@ namespace easy_control_c_sharp.backend
             return accord;
         }
 
+        /**
+         * 確認手勢跟上一個手勢相同，可能發生傳入兩個相同手勢的情況
+         */
         private bool IsPreviousPose(string pose)
         {
             if (_index > 0)
             {
-                // 跟上個手勢相同，可能傳入兩個相同手勢
                 if (pose == _poseCombination[_index - 1])
                 {
                     return true;
@@ -74,6 +89,9 @@ namespace easy_control_c_sharp.backend
             return false;
         }
 
+        /**
+         * 確認傳入的手勢是否符合新的手勢
+         */
         private bool IsNewPose(string pose)
         {
             // index在範圍內
@@ -99,28 +117,34 @@ namespace easy_control_c_sharp.backend
             return false;
         }
 
+        /**
+         * 確認此手勢組合是否要一直執行功能，且已完成除了最後一個手勢以外的所有手勢，或全部都完成了
+         */
         private bool IsReadyContiuePose()
         {
             // 連貫性的手勢，可能是最後一個手勢尚未符合或已經符合，符合以上條件就須留在filter中
             return _isContiue && _index >= _poseCombination.Count - 1;
         }
 
+        /**
+         * 執行功能
+         */
         public void DoAction()
         {
-            foreach (Tuple<VirtualKeyCode, PoseCombination.States> item in _keys)
-            {
-                PoseCombination.States state = item.Item2;
-                VirtualKeyCode key = item.Item1;
+            foreach (Key key in _keys)
+            { 
+                KeyStates state = key.State;
+                VirtualKeyCode code = key.Code;
                 switch (state)
                 {
-                    case States.Press:
-                        InputSimulator.SimulateKeyPress(key);
+                    case KeyStates.Press:
+                        InputSimulator.SimulateKeyPress(code);
                         break;
-                    case States.Hold:
-                        InputSimulator.SimulateKeyDown(key);
+                    case KeyStates.Hold:
+                        InputSimulator.SimulateKeyDown(code);
                         break;
-                    case States.Release:
-                        InputSimulator.SimulateKeyUp(key);
+                    case KeyStates.Release:
+                        InputSimulator.SimulateKeyUp(code);
                         break;
                     default:
                         break;
