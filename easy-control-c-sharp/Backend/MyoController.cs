@@ -10,7 +10,7 @@ using MyoSharp.Exceptions;
 using System.Runtime.InteropServices; // use DllImport
 using WindowsInput;
 
-namespace easy_control_c_sharp.Backend
+namespace easy_control_c_sharp.backend
 {
     public class MyoController
     {

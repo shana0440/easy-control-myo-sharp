@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms; // SendKey
 using WindowsInput;
 
-namespace easy_control_c_sharp.Backend
+namespace easy_control_c_sharp.backend
 {
     public class PoseCombination
     {

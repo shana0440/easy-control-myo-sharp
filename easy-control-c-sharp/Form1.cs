@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using easy_control_c_sharp.Backend;
+using easy_control_c_sharp.backend;
 
 namespace easy_control_c_sharp
 {

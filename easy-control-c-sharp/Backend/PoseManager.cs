@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace easy_control_c_sharp.Backend
+namespace easy_control_c_sharp.backend
 {
     public class PoseManager
     {
