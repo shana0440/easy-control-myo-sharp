@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms; // SendKey
 using WindowsInput;
-using easy_control_c_sharp.common;
 
-namespace easy_control_c_sharp.backend
+namespace easy_control_c_sharp.common
 {
     public class PoseCombination
     {
@@ -26,12 +25,22 @@ namespace easy_control_c_sharp.backend
             _poseCombination.Add(pose);
         }
 
+        public void RemovePose(string pose)
+        {
+            _poseCombination.Remove(pose);
+        }
+
         /**
          * 加入按鍵
          */
         public void AddKey(VirtualKeyCode key, KeyStates state)
         {
             _keys.Add(new Key(key, state));
+        }
+
+        public void RemoveKey(Key key)
+        {
+            _keys.Remove(key);
         }
 
         /**
@@ -52,7 +61,10 @@ namespace easy_control_c_sharp.backend
             set { _isContiue = value; }
         }
 
-        public bool ConformPose(string pose)
+        /**
+         * 確認這個手勢組合是否有符合傳入的手勢
+         */
+        public bool IsConformPose(string pose)
         {
             bool accord = false;
             if (IsPreviousPose(pose))
