@@ -113,7 +113,6 @@ namespace easy_control_c_sharp.backend
                 }
                 ReceivePose(e.Pose.ToString());
             }
-            Console.WriteLine("Detected {0} pose!", e.Pose);
         }
 
         private void OnOrientationData(object sender, OrientationDataEventArgs e)
@@ -132,6 +131,7 @@ namespace easy_control_c_sharp.backend
             if (_onReceive)
             {
                 _poseManager.FilterPose(pose);
+                Console.WriteLine("Detected {0} pose!", pose);
             }
         }
 
