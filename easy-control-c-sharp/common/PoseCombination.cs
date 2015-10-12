@@ -152,12 +152,15 @@ namespace easy_control_c_sharp.common
                 {
                     case KeyStates.Press:
                         InputSimulator.SimulateKeyPress(code);
+                        Console.WriteLine("Press {0} key", code.ToString());
                         break;
                     case KeyStates.Hold:
                         InputSimulator.SimulateKeyDown(code);
+                        Console.WriteLine("Down {0} key", code.ToString());
                         break;
                     case KeyStates.Release:
                         InputSimulator.SimulateKeyUp(code);
+                        Console.WriteLine("Up {0} key", code.ToString());
                         break;
                     default:
                         break;
