@@ -9,6 +9,7 @@ using MyoSharp.Device;
 using MyoSharp.Exceptions;
 using System.Runtime.InteropServices; // use DllImport
 using WindowsInput;
+using easy_control_c_sharp.common;
 
 namespace easy_control_c_sharp.backend
 {
