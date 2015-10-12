@@ -154,6 +154,7 @@ namespace easy_control_c_sharp.backend
         {
             _onReceive = false;
             _poseManager.ReceiveOver();
+            _orientation.ClearBuffer();
             Console.WriteLine("Receive over!");
         }
 
