@@ -17,11 +17,13 @@ namespace easy_control_c_sharp.backend
         private IChannel _myoChannel;
         private IHub _myoHub;
         private bool _onReceive = false;
-        private bool _isLock = false;
-        private PoseManager _poseManager = new PoseManager();
+        //private bool _isLock = false;
+        private PoseManager _poseManager;
+        private Orientation _orientation = new Orientation();
         
-        public MyoController()
+        public MyoController(PoseManager poseManager)
         {
+            _poseManager = poseManager;
             try
             {
                 _myoChannel = Channel.Create(
