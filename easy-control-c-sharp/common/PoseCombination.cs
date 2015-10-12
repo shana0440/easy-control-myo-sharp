@@ -123,7 +123,6 @@ namespace easy_control_c_sharp.common
                 // 沒有符合的手勢
                 else
                 {
-                    //_index = 0;
                     return false;
                 }
             }
@@ -166,6 +165,12 @@ namespace easy_control_c_sharp.common
                         break;
                 }
             }
+        }
+
+        public void Reset()
+        {
+            _isComplete = false;
+            _index = 0;
         }
     }
 }
