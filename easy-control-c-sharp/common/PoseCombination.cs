@@ -76,6 +76,7 @@ namespace easy_control_c_sharp.common
                 // 連貫性的手勢，可能是最後一個手勢尚未符合或已經符合
                 // 符合以上條件就須留在filter中
                 _index = _poseCombination.Count - 1;
+                IsNewPose(pose);
                 accord = true;
             }
             else
