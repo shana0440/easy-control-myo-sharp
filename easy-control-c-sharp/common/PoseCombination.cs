@@ -111,7 +111,7 @@ namespace easy_control_c_sharp.common
             if (_index >= 0 && _index < _poseCombination.Count)
             {
                 // 為新的手勢
-                if (pose == _poseCombination[_index])
+                if (pose.ToLower() == _poseCombination[_index].ToLower())
                 {
                     _index++; // start with 0
                     if (_index >= _poseCombination.Count)
