@@ -145,7 +145,7 @@ namespace easy_control_c_sharp.backend
             _onReceive = true;
             IntPtr selectedWindow = GetForegroundWindow();
             string selectedWindowTitle = GetWindowTitle(selectedWindow, IntPtr.Zero);
-            _poseManager.SetFocussWindow(selectedWindowTitle);
+            _poseManager.SetFocusWindow(selectedWindowTitle);
             Console.WriteLine("focus on {0} window!", selectedWindowTitle);
             Console.WriteLine("Start receive!");
         }
