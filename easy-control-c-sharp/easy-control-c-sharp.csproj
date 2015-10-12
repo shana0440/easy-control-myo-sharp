@@ -53,19 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backend\PoseCombination.cs" />
-    <Compile Include="Backend\PoseManager.cs" />
+    <Compile Include="common\Key.cs" />
+    <Compile Include="backend\Orientation.cs" />
+    <Compile Include="common\PoseManager.cs" />
     <Compile Include="class\Key.cs" />
     <Compile Include="class\Mode.cs" />
     <Compile Include="class\Pose.cs" />
     <Compile Include="class\PoseCombination.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Backend\MyoController.cs" />
+    <Compile Include="backend\MyoController.cs" />
+    <Compile Include="common\KeyStates.cs" />
+    <Compile Include="common\PoseCombination.cs" />
+    <Compile Include="common\Window.cs" />
     <Compile Include="form\EasyControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,9 +102,6 @@
     <Compile Include="presentationModel\PresentationModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="form\easyControl.resx">
       <DependentUpon>EasyControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +126,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
