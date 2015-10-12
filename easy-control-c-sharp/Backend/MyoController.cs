@@ -117,13 +117,18 @@ namespace easy_control_c_sharp.backend
 
         private void OnOrientationData(object sender, OrientationDataEventArgs e)
         {
-            const float PI = (float)System.Math.PI;
+            if (_onReceive)
+            {
+                _orientation.PushQuat(e.Roll, e.Pitch, e.Yaw);
+                if (_orientation.BufferFull)
+                {
+                    string dir = _orientation.GetArmDirection();
+                    _orientation.ClearBuffer();
 
-            // convert the values to a 0-9 scale (for easier digestion/understanding)
-            var roll = (int)((e.Roll + PI) / (PI * 2.0f) * 10);
-            var pitch = (int)((e.Pitch + PI) / (PI * 2.0f) * 10);
-            var yaw = (int)((e.Yaw + PI) / (PI * 2.0f) * 10);
-            
+                    if (dir != "")
+                        ReceivePose(dir);
+                }
+            }
         }
 
         private void ReceivePose(string pose)
