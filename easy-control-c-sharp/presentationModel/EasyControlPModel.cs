@@ -6,26 +6,25 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.IO;
-using easy_control_c_sharp.common;
 
 namespace easy_control_c_sharp
 {
     public partial class PresentationModel
     {
         // Mode method
-        public BindingList<Mode> GetModeList()
+        public BindingList<Window> GetModeList()
         {
             return _model.GetModeList();
         }
 
-        public Mode AddMode(string name)
+        public Window AddMode(string name)
         {
             return _model.AddMode(name);
         }
 
-        public void RemoveMode(Mode mode)
+        public void RemoveMode(Window window)
         {
-            _model.RemoveMode(mode);
+            _model.RemoveMode(window);
         }
 
         public void ProcessResizeForm(FormWindowState winState)
@@ -52,68 +51,68 @@ namespace easy_control_c_sharp
         {
             if (rowIndex >= 0)
             {
-                Mode mode = presentationModel.GetModeByIndex(rowIndex);
-                ModeDetail detailForm = new ModeDetail(presentationModel, mode);
-                detailForm.Text = mode.Name;
+                Window window = presentationModel.GetModeByIndex(rowIndex);
+                ModeDetail detailForm = new ModeDetail(presentationModel, window);
+                detailForm.Text = window.Name;
                 switch (columnIndex)
                 {
                     // this is delete button, we add delete columns first, then format binding columns
                     // so delete button columns index while be 0, even we setting displayIndex is 2
                     case 0:
-                        CloseModeDetailForm(mode);
-                        RemoveMode(mode);
-                        RemoveImage(mode.Name);
+                        CloseModeDetailForm(window);
+                        RemoveMode(window);
+                        RemoveImage(window.Name);
                         break;
 
                     case 3:
-                        mode.IsEnable = !mode.IsEnable;
+                        window.IsEnable = !window.IsEnable;
                         break;
 
                     default:
-                        OpenModeDetailForm(mode, detailForm);
+                        OpenModeDetailForm(window, detailForm);
                         break;
                 }
             }
         }
 
-        private void OpenModeDetailForm(Mode mode, Form detailForm)
+        private void OpenModeDetailForm(Window window, Form detailForm)
         {
-            if (!mode.IsOpen)
+            if (!window.IsOpen)
             {
-                OpenDetailForm(mode);
+                OpenDetailForm(window);
                 detailForm.Show();
             }
             else
             {
-                Form openedForm = ExistForm(mode);
+                Form openedForm = ExistForm(window);
                 openedForm.Activate();
             }
         }
 
         // Detail Form method
-        public Mode GetModeByIndex(int index)
+        public Window GetModeByIndex(int index)
         {
             return _model.GetModeByIndex(index);
         }
 
-        public void OpenDetailForm(Mode mode)
+        public void OpenDetailForm(Window window)
         {
-            mode.IsOpen = true;
+            window.IsOpen = true;
         }
 
-        private void CloseModeDetailForm(Mode mode)
+        private void CloseModeDetailForm(Window window)
         {
-            Form openedForm = ExistForm(mode);
+            Form openedForm = ExistForm(window);
             if (openedForm != null)
                 openedForm.Close();
         }
 
-        private Form ExistForm(Mode mode)
+        private Form ExistForm(Window window)
         {
             FormCollection openForms = Application.OpenForms;
             foreach (Form form in openForms)
             {
-                if (form.Text == mode.Name)
+                if (form.Text == window.Name)
                 {
                     return form;
                 }
@@ -132,8 +131,8 @@ namespace easy_control_c_sharp
                 if (!File.Exists(ownImagePath))
                     File.Copy(modeAddForm.GetImageFile(), ownImagePath);
                 // if mode is exist, must pop alert
-                Mode mode = AddMode(modeAddForm.GetModeName());
-                mode.SetImage(ownImagePath);
+                Window window = AddMode(modeAddForm.GetModeName());
+                window.SetImage(ownImagePath);
             }
         }
 
