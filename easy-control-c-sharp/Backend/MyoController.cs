@@ -9,9 +9,8 @@ using MyoSharp.Device;
 using MyoSharp.Exceptions;
 using System.Runtime.InteropServices; // use DllImport
 using WindowsInput;
-using easy_control_c_sharp.common;
 
-namespace easy_control_c_sharp.backend
+namespace easy_control_c_sharp
 {
     public class MyoController
     {
@@ -56,13 +55,13 @@ namespace easy_control_c_sharp.backend
             PoseCombination pose2 = new PoseCombination();
             pose2.AddPose("fist");
             pose2.AddPose("pitchUp");
-            pose2.IsContiue = true;
+            pose2.IsContinue = true;
             pose2.AddKey(VirtualKeyCode.NEXT, KeyStates.Press);
 
             PoseCombination pose3 = new PoseCombination();
             pose3.AddPose("fist");
             pose3.AddPose("pitchDown");
-            pose3.IsContiue = true;
+            pose3.IsContinue = true;
             pose3.AddKey(VirtualKeyCode.PRIOR, KeyStates.Press);
 
             foobar2000.AddPoseCombination(pose1);
