@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using easy_control_c_sharp.common;
 
 namespace easy_control_c_sharp
 {
     public partial class PresentationModel
     {
-        public void ProcessPoseCombinationGridViewCell(Mode mode, int rowIndex, int columnIndex, PresentationModel presentationModel)
+        public void ProcessPoseCombinationGridViewCell(Window window, int rowIndex, int columnIndex, PresentationModel presentationModel)
         {
             if (rowIndex >= 0)
             {
-                PoseCombinationSelect poseCombinationForm = new PoseCombinationSelect(presentationModel, mode, rowIndex);
+                PoseCombinationSelect poseCombinationForm = new PoseCombinationSelect(presentationModel, window, rowIndex);
                 switch (columnIndex)
                 {
                     // this is delete button, we add delete columns first, then format binding columns
                     // so delete button columns index while be 0, even we setting displayIndex is 1
                     case 0:
-                        mode.RemovePoseCombinationByIndex(rowIndex);
+                        window.RemovePoseCombinationByIndex(rowIndex);
                         break;
 
                     case 2:
-                        mode.GetPoseCombination(rowIndex).IsEnable = !mode.GetPoseCombination(rowIndex).IsEnable;
+                        window.GetPoseCombination(rowIndex).IsEnable = !window.GetPoseCombination(rowIndex).IsEnable;
                         break;
 
                     default:
@@ -38,6 +37,12 @@ namespace easy_control_c_sharp
             string columnName = poseCombinationGridView.Columns[columnIndex].Name;
             switch (columnName)
             {
+                //case "IsCompleted":
+                //    poseCombinationGridView.Columns[columnIndex].Visible = false;
+                //    break;
+                //case "IsContinue":
+                //    poseCombinationGridView.Columns[columnIndex].Visible = false;
+                //    break;
                 case "IsEnable":
                     poseCombinationGridView.Columns[columnIndex].Width = 50;
                     break;
