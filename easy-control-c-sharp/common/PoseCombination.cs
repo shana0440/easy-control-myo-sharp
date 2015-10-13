@@ -1,28 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms; // SendKey
 using WindowsInput;
 
-namespace easy_control_c_sharp.common
+namespace easy_control_c_sharp
 {
     public class PoseCombination
     {
         private List<string> _poseCombination = new List<string>();
         private List<Key> _keys = new List<Key>();
         private bool _isComplete = false;
+        private bool _enable = true;
         private bool _isContiue = false;
         private int _index = 0;
+        private Bitmap _image;
         public enum States { Press, Hold, Release }
+        private string[] _startPose = new string[] { "fingersSpread", "waveOut", "waveIn", "fist" };
 
         /**
          * 加入手勢
          */
+        public void TogglePose(string pose)
+        {
+            if (IsPoseExist(pose))
+            {
+                RemovePose(pose);
+            }
+            else
+            {
+                AddPose(pose);
+            }
+        }
+
         public void AddPose(string pose)
         {
-            _poseCombination.Add(pose);
+            if (_startPose.Contains(pose))
+                _poseCombination.Insert(StartPoseLastIndex(), pose);
+            else
+                _poseCombination.Add(pose);
+        }
+
+        //取得_poses裡手勢(不包含手臂)最後的位置
+        private int StartPoseLastIndex()
+        {
+            for (int i = 0; i < _poseCombination.Count; i++)
+            {
+                if (!_startPose.Contains(_poseCombination[i]))
+                    return i;
+                if (i == _poseCombination.Count - 1)
+                    return _poseCombination.Count;
+            }
+            return 0;
         }
 
         public void RemovePose(string pose)
@@ -30,17 +62,62 @@ namespace easy_control_c_sharp.common
             _poseCombination.Remove(pose);
         }
 
+        public void RemovePose(int index)
+        {
+            _poseCombination.RemoveAt(index);
+        }
+
+        public bool IsPoseExist(string pose)
+        {
+            return _poseCombination.Exists(item => item == pose);
+        }
+
         /**
          * 加入按鍵
          */
+        public void ToggleKey(Key key)
+        {
+            if (IsKeyExist(key))
+            {
+                RemoveKey(key);
+            }
+            else
+            {
+                AddKey(key);
+            }
+        }
+
         public void AddKey(VirtualKeyCode key, KeyStates state)
         {
             _keys.Add(new Key(key, state));
         }
 
+        public void AddKey(Key key)
+        {
+            _keys.Add(key);
+        }
+
         public void RemoveKey(Key key)
         {
-            _keys.Remove(key);
+            for (int i = 0; i < _keys.Count; i++)
+            {
+                if (_keys[i].Code == key.Code)
+                    _keys.Remove(key);
+            }
+        }
+
+        public bool IsKeyExist(Key key)
+        {
+            return _keys.Exists(item => item.Code == key.Code);
+        }
+
+        /**
+         * 取得手勢配對圖片
+         */
+        public Bitmap GetImage
+        {
+            get { return _image; }
+            set { _image = value; }
         }
 
         /**
@@ -55,10 +132,19 @@ namespace easy_control_c_sharp.common
         /**
          * 這個手勢是否為持續性的功能
          */
-        public bool IsContiue
+        public bool IsContinue
         {
             get { return _isContiue; }
             set { _isContiue = value; }
+        }
+
+        /**
+         * 是否啟動此手勢配對
+         */
+        public bool IsEnable
+        {
+            get { return _enable; }
+            set { _enable = value; }
         }
 
         /**
@@ -165,6 +251,50 @@ namespace easy_control_c_sharp.common
                         break;
                 }
             }
+        }
+
+        //取得手勢
+        public string GetPose(int index)
+        {
+            return _poseCombination[index];
+        }
+
+        //取得功能鍵
+        public Key GetKey(int index)
+        {
+            return _keys[index];
+        }
+
+        //取得手勢數量
+        public int GetPoseLength()
+        {
+            return _poseCombination.Count;
+        }
+
+        //取得功能鍵數量
+        public int GetKeyLength()
+        {
+            return _keys.Count;
+        }
+
+        //檢查是否有手勢資料
+        public bool CheckPose()
+        {
+            for (int i = 0; i < _poseCombination.Count; i++)
+            {
+                if (_startPose.Contains(_poseCombination[i]))
+                    return true;
+            }
+            return false;
+        }
+
+        //檢查是否有按鍵資料
+        public bool CheckKey()
+        {
+            if (_keys.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         public void Reset()
