@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace easy_control_c_sharp.common
+namespace easy_control_c_sharp
 {
     public class Window
     {
-        private List<PoseCombination> _poseCollection = new List<PoseCombination>();
+        private BindingList<PoseCombination> _poseCollection = new BindingList<PoseCombination>();
+        private List<PoseCombination> _poseCollectionList = new List<PoseCombination>();
         private string _name;
         private bool _enable = true;
         private bool _open = false;
@@ -25,14 +27,43 @@ namespace easy_control_c_sharp.common
             _poseCollection.Add(poseCombination);
         }
 
+        public void InsertPoseCombination(int index, PoseCombination poseCombination)
+        {
+            _poseCollection.Insert(index, poseCombination);
+        }
+
         public void RemovePoseCombination(PoseCombination poseCombination)
         {
             _poseCollection.Remove(poseCombination);
         }
 
-        public List<PoseCombination> GetPoseCollection()
+        public void RemovePoseCombinationByIndex(int index)
+        {
+            _poseCollection.RemoveAt(index);
+        }
+
+        public PoseCombination GetPoseCombination(int index)
+        {
+            PoseCombination response = null;
+            if (index < _poseCollection.Count)
+            {
+                response = _poseCollection[index];
+            }
+            return response;
+        }
+
+        public BindingList<PoseCombination> GetPoseCollection()
         {
             return _poseCollection;
+        }
+
+        public List<PoseCombination> GetPoseCollectionList()
+        {
+            foreach (PoseCombination poseCombination in _poseCollection)
+            {
+                _poseCollectionList.Add(poseCombination);
+            }
+            return _poseCollectionList;
         }
 
         // image property
