@@ -55,11 +55,8 @@
   <ItemGroup>
     <Compile Include="common\Key.cs" />
     <Compile Include="backend\Orientation.cs" />
+    <Compile Include="common\Pose.cs" />
     <Compile Include="common\PoseManager.cs" />
-    <Compile Include="class\Key.cs" />
-    <Compile Include="class\Mode.cs" />
-    <Compile Include="class\Pose.cs" />
-    <Compile Include="class\PoseCombination.cs" />
     <Compile Include="backend\MyoController.cs" />
     <Compile Include="common\KeyStates.cs" />
     <Compile Include="common\PoseCombination.cs" />
@@ -126,7 +123,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

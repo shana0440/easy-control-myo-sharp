@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace easy_control_UI
+namespace easy_control_c_sharp.common
 {
     public class Pose
     {

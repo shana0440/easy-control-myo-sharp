@@ -6,7 +6,7 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace easy_control_UI
+namespace easy_control_c_sharp
 {
     public partial class PresentationModel
     {

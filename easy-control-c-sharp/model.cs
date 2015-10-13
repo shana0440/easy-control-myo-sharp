@@ -4,13 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using easy_control_c_sharp.common;
 
-namespace easy_control_UI
+namespace easy_control_c_sharp
 {
     public class Model
     {
         private BindingList<Mode> _modeList = new BindingList<Mode>();
-
+        
         // create a new mode, and adding mode list
         public Mode AddMode(string name)
         {

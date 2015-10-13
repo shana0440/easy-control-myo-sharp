@@ -1,4 +1,4 @@
-﻿namespace easy_control_UI
+﻿namespace easy_control_c_sharp
 {
     partial class KeyMode
     {
