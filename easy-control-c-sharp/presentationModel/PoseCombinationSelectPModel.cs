@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using easy_control_c_sharp.common;
 
 namespace easy_control_c_sharp
 {
@@ -20,19 +19,26 @@ namespace easy_control_c_sharp
             {
                 poseCombination.AddKey(editPoseCombination.GetKey(i));
             }
-            if (editPoseCombination.GetIsContinue())
-                poseCombination.SetIsContinue();
+            poseCombination.IsContinue = editPoseCombination.IsContinue;
         }
 
-        public void ProcessPosePictureBoxPaint(Graphics graphics, PoseCombination poseCombination)
+        public void ProcessPosePictureBoxPaint(Graphics graphics, PoseCombination poseCombination, PresentationModel _presentationModel)
         {
+            Bitmap bmp = new Bitmap(300, 50);
+            Graphics g = Graphics.FromImage(bmp);
+            g.Clear(Color.White);
             if (poseCombination.GetPoseLength() != 0)
-                graphics.DrawImage(poseCombination.GetPose(0).GetPoseImage(), 10, 260);
+            {
+                graphics.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(0), 75, 75), 10, 260);
+                g.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(0), 50, 50), 0, 0);
+            }
             for (int i = 1; i < poseCombination.GetPoseLength(); i++)
             {
                 graphics.DrawString("+", new Font("Arial", 30), Brushes.SkyBlue, 110 * i - 25, 275);
-                graphics.DrawImage(poseCombination.GetPose(i).GetPoseImage(), 10 + 110 * i, 260);
+                graphics.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(i), 75, 75), 10 + 110 * i, 260);
+                g.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(i), 50, 50), 52 * i, 0);
             }
+            poseCombination.GetImage = bmp;
         }
 
         public void ProcessKeyPictureBoxPaint(Graphics graphics, PoseCombination poseCombination, Dictionary<Rectangle, Key> keyBoard)
@@ -43,23 +49,23 @@ namespace easy_control_c_sharp
             for (int i = 0; i < poseCombination.GetKeyLength(); i++)
             {
                 Key key = poseCombination.GetKey(i);
-                switch (key.GetKeyMode())
+                switch (key.State)
                 {
                     //design by http://stackoverflow.com/questions/2444033/get-dictionary-key-by-value
-                    case "press":
-                        graphics.FillRectangle(redBrush, keyBoard.FirstOrDefault(x => x.Value.GetKeyName() == key.GetKeyName()).Key);
+                    case KeyStates.Press:
+                        graphics.FillRectangle(redBrush, keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
                         break;
-                    case "hold":
-                        graphics.FillRectangle(greenBrush, keyBoard.FirstOrDefault(x => x.Value.GetKeyName() == key.GetKeyName()).Key);
+                    case KeyStates.Hold:
+                        graphics.FillRectangle(greenBrush, keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
                         break;
-                    case "release":
-                        graphics.FillRectangle(blueBrush, keyBoard.FirstOrDefault(x => x.Value.GetKeyName() == key.GetKeyName()).Key);
+                    case KeyStates.Release:
+                        graphics.FillRectangle(blueBrush, keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
                         break;
                 }
             }
         }
 
-        public void ProcessClickPosePictureBox(int locationX, int locationY, PoseCombination poseCombination, Dictionary<Rectangle, Pose> poseBoard)
+        public void ProcessClickPosePictureBox(int locationX, int locationY, PoseCombination poseCombination, Dictionary<Rectangle, string> poseBoard)
         {
             foreach (Rectangle poseRect in poseBoard.Keys)
             {
@@ -72,7 +78,7 @@ namespace easy_control_c_sharp
             {
                 Rectangle select = new Rectangle(10 + 110 * i, 260, 75, 75);
                 if (select.Contains(locationX, locationY))
-                    poseCombination.RemovePoseByIndex(i);
+                    poseCombination.RemovePose(i);
             }
         }
 
@@ -99,7 +105,7 @@ namespace easy_control_c_sharp
                 DialogResult result = keyMode.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    key.SetKeyMode(keyMode.GetKeyMode());
+                    key.State = keyMode.GetKeyMode();
                     poseCombination.ToggleKey(key);
                 }
             }
@@ -107,12 +113,12 @@ namespace easy_control_c_sharp
 
         public bool CheckPosesIsContinue(PoseCombination poseCombination)
         {
-            if (poseCombination.CheckIsContinue())
+            if (poseCombination.IsContinue)
                 return true;
             else
             {
-                if (poseCombination.GetIsContinue())
-                    poseCombination.SetIsContinue();
+                if (poseCombination.IsContinue)
+                    poseCombination.IsContinue = false;
                 return false;
             }
         }
@@ -125,15 +131,15 @@ namespace easy_control_c_sharp
                 return false;
         }
 
-        public void AddPoseCombination(Mode mode, PoseCombination poseCombination, bool isEdit, int editIndex)
+        public void AddPoseCombination(Window window, PoseCombination poseCombination, bool isEdit, int editIndex)
         {
             if (isEdit)
             {
-                mode.RemovePoseCombinationByIndex(editIndex);
-                mode.InsertPoseCombination(editIndex, poseCombination);
+                window.RemovePoseCombinationByIndex(editIndex);
+                window.InsertPoseCombination(editIndex, poseCombination);
             }
             else
-                mode.AddPoseCombination(poseCombination);
+                window.AddPoseCombination(poseCombination);
         }
     }
 }
