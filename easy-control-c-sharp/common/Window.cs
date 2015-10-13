@@ -56,12 +56,14 @@ namespace easy_control_c_sharp
         {
             return _poseCollection;
         }
-
+        
         public List<PoseCombination> GetPoseCollectionList()
         {
+            _poseCollectionList.Clear();
             foreach (PoseCombination poseCombination in _poseCollection)
             {
-                _poseCollectionList.Add(poseCombination);
+                if (poseCombination.IsEnable)
+                    _poseCollectionList.Add(poseCombination);
             }
             return _poseCollectionList;
         }
