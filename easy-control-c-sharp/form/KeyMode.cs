@@ -6,17 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using easy_control_c_sharp.common;
 
 namespace easy_control_c_sharp
 {
     public partial class KeyMode : Form
     {
-        private string _keyMode;
+        private KeyStates _keyMode;
         public KeyMode()
         {
             InitializeComponent();
-            _keyMode = "";
+            _keyMode = KeyStates.None;
         }
 
         //點擊Press
@@ -25,7 +24,7 @@ namespace easy_control_c_sharp
             _press.Checked = true;
             _hold.Checked = false;
             _release.Checked = false;
-            _keyMode = "press";
+            _keyMode = KeyStates.Press;
         }
 
         //點擊Hold
@@ -34,7 +33,7 @@ namespace easy_control_c_sharp
             _press.Checked = false;
             _hold.Checked = true;
             _release.Checked = false;
-            _keyMode = "hold";
+            _keyMode = KeyStates.Hold;
         }
 
         //點擊Release
@@ -43,7 +42,7 @@ namespace easy_control_c_sharp
             _press.Checked = false;
             _hold.Checked = false;
             _release.Checked = true;
-            _keyMode = "release";
+            _keyMode = KeyStates.Release;
         }
 
         //按鈕事件(確認手勢配對按鈕)
@@ -53,7 +52,7 @@ namespace easy_control_c_sharp
         }
 
         //回傳按鍵狀態
-        public string GetKeyMode()
+        public KeyStates GetKeyMode()
         {
             return _keyMode;
         }
