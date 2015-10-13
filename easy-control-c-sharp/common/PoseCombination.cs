@@ -15,6 +15,7 @@ namespace easy_control_c_sharp.common
         private bool _isComplete = false;
         private bool _isContiue = false;
         private int _index = 0;
+        private bool _enable = true;
         public enum States { Press, Hold, Release }
 
         /**
@@ -59,6 +60,12 @@ namespace easy_control_c_sharp.common
         {
             get { return _isContiue; }
             set { _isContiue = value; }
+        }
+
+        public bool IsEnable
+        {
+            get { return _enable; }
+            set { _enable = value; }
         }
 
         /**

@@ -36,5 +36,10 @@ namespace easy_control_c_sharp.common
         {
             return _poseCollection;
         }
+
+        public List<PoseCombination> GetEnablePoseCollection()
+        {
+            return _poseCollection.FindAll(item => item.IsEnable);
+        }
     }
 }

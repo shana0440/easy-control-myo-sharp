@@ -104,7 +104,7 @@ namespace easy_control_c_sharp.common
             {
                 try
                 {
-                    poseCollection = window.GetPoseCollection();
+                    poseCollection = window.GetEnablePoseCollection();
                 }
                 catch (Exception)
                 {
