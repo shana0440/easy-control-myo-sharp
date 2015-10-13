@@ -99,7 +99,16 @@ namespace easy_control_c_sharp.backend
             if (e.Myo.Pose == Pose.DoubleTap)
             {
                 // use doubletap trigger myo lock
-                e.Myo.Unlock(UnlockType.Hold);
+                if (_isLock)
+                {
+                    e.Myo.Unlock(UnlockType.Hold);
+                    _isLock = false;
+                }
+                else
+                {
+                    e.Myo.Lock();
+                    _isLock = true;
+                }
             }
             else if (e.Myo.Pose == Pose.Rest)
             {
