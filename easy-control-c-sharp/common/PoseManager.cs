@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace easy_control_c_sharp.common
+namespace easy_control_c_sharp
 {
     public class PoseManager
     {
@@ -49,7 +49,7 @@ namespace easy_control_c_sharp.common
                 // make sure filter just have one completed pose combination
                 if (item.IsConformPose(pose) || (item.IsCompleted && !hasCompleted))
                 {
-                    if (item.IsCompleted && item.IsContiue)
+                    if (item.IsCompleted && item.IsContinue)
                     {
                         item.DoAction();
                         item.IsCompleted = false;
@@ -104,7 +104,7 @@ namespace easy_control_c_sharp.common
             {
                 try
                 {
-                    poseCollection = window.GetPoseCollection();
+                    poseCollection = window.GetPoseCollectionList();
                 }
                 catch (Exception)
                 {
