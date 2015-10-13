@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WindowsInput;
 
-namespace easy_control_c_sharp.common
+namespace easy_control_c_sharp
 {
     public class Key
     {

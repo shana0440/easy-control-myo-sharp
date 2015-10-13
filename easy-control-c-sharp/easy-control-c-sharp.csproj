@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="common\Key.cs" />
     <Compile Include="backend\Orientation.cs" />
-    <Compile Include="common\Pose.cs" />
     <Compile Include="common\PoseManager.cs" />
     <Compile Include="backend\MyoController.cs" />
     <Compile Include="common\KeyStates.cs" />

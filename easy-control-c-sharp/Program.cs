@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace easy_control_UI
+namespace easy_control_c_sharp
 {
     static class Program
     {
