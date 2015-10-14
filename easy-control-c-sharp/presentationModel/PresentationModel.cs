@@ -12,6 +12,7 @@ namespace easy_control_c_sharp
     {
         Model _model;
         private Dictionary<string, Image> _imageList = new Dictionary<string, Image>();
+        private CutImageMethod cutImageMethod = new CutImageMethod();
 
         public PresentationModel(Model model)
         {
@@ -64,10 +65,7 @@ namespace easy_control_c_sharp
         {
             if (!IsImageExist(name))
             {
-                Bitmap bmp = new Bitmap(section.Width, section.Height);
-                Graphics g = Graphics.FromImage(bmp);
-                g.DrawImage(source, 0, 0, section, GraphicsUnit.Pixel);
-                _imageList.Add(name, bmp);
+                _imageList.Add(name, cutImageMethod.CutImage(source, section));
             }
             return !IsImageExist(name);
         }
