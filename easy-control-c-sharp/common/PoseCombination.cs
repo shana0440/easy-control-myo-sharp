@@ -102,7 +102,7 @@ namespace easy_control_c_sharp
             for (int i = 0; i < _keys.Count; i++)
             {
                 if (_keys[i].Code == key.Code)
-                    _keys.Remove(key);
+                    _keys.RemoveAt(i);
             }
         }
 
