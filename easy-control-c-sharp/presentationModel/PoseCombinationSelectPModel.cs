@@ -127,7 +127,7 @@ namespace easy_control_c_sharp
         {
             Bitmap canvas = new Bitmap(300, 50);
             Graphics graphics = Graphics.FromImage(canvas);
-            graphics.Clear(Color.White);
+            graphics.Clear(SystemColors.Control);
             if (poseCombination.GetPoseLength() != 0)
                 graphics.DrawImage(presentationModel.GetImage(poseCombination.GetPose(0), 50, 50), 0, 0);
             for (int i = 1; i < poseCombination.GetPoseLength(); i++)
