@@ -74,6 +74,12 @@ namespace easy_control_c_sharp
             _imagePath = path;
         }
 
+        // image property
+        public string GetImagePath()
+        {
+            return _imagePath;
+        }
+
         // Image property
         public Bitmap GetImage
         {
