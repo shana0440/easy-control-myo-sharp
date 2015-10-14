@@ -108,19 +108,19 @@
             this.開啟EasyControlToolStripMenuItem,
             this.結束ToolStripMenuItem});
             this._contextMenuStrip.Name = "_contextMenuStrip";
-            this._contextMenuStrip.Size = new System.Drawing.Size(168, 48);
+            this._contextMenuStrip.Size = new System.Drawing.Size(166, 48);
             // 
             // 開啟EasyControlToolStripMenuItem
             // 
             this.開啟EasyControlToolStripMenuItem.Name = "開啟EasyControlToolStripMenuItem";
-            this.開啟EasyControlToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.開啟EasyControlToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.開啟EasyControlToolStripMenuItem.Text = "開啟EasyControl";
             this.開啟EasyControlToolStripMenuItem.Click += new System.EventHandler(this.ClickMenuStripOpen);
             // 
             // 結束ToolStripMenuItem
             // 
             this.結束ToolStripMenuItem.Name = "結束ToolStripMenuItem";
-            this.結束ToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.結束ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.結束ToolStripMenuItem.Text = "結束";
             this.結束ToolStripMenuItem.Click += new System.EventHandler(this.ClickMenuStripClose);
             // 
@@ -133,6 +133,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "EasyControl";
             this.Text = "easyControl";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseForm);
             this.Resize += new System.EventHandler(this.ResizeForm);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._modeGridView)).EndInit();
