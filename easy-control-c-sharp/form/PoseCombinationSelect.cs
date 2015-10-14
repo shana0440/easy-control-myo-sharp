@@ -221,24 +221,7 @@ namespace easy_control_c_sharp
         //按鈕事件(確認按鈕)
         private void ClickOkButton(object sender, EventArgs e)
         {
-            Bitmap bmp = new Bitmap(300, 50);
-            Graphics g = Graphics.FromImage(bmp);
-            g.Clear(Color.White);
-            if (_poseCombination.GetPoseLength() != 0)
-                g.DrawImage(_presentationModel.GetImage(_poseCombination.GetPose(0), 50, 50), 0, 0);
-            for (int i = 1; i < _poseCombination.GetPoseLength(); i++)
-                g.DrawImage(_presentationModel.GetImage(_poseCombination.GetPose(i), 50, 50), 52 * i, 0);
-            g.DrawString("➜", new Font("Arial", 30), Brushes.Black, _poseCombination.GetPoseLength() * 50, 5);
-            for (int i = 0; i < _poseCombination.GetKeyLength(); i++)
-            {
-                Rectangle section = _keyBoard.FirstOrDefault(x => x.Value.Code == _poseCombination.GetKey(i).Code).Key;
-                Bitmap bmp2 = new Bitmap(section.Width, section.Height);
-                Graphics g2 = Graphics.FromImage(bmp2);
-                g2.DrawImage(_presentationModel.GetImage("keyboard", _keyPictureBox.Width, _keyPictureBox.Height), 0, 0, section, GraphicsUnit.Pixel);
-                g.DrawImage(bmp2, (_poseCombination.GetPoseLength() + i + 1) * 50, 5);
-            }
-            _poseCombination.GetImage = bmp;
-
+            _poseCombination.GetImage = _presentationModel.GetPoseCombinationImage(_poseCombination, _presentationModel, _keyBoard, _keyPictureBox.Width, _keyPictureBox.Height);
             _presentationModel.AddPoseCombination(_window, _poseCombination, _isEdit, _editIndex);
             Close();
         }

@@ -123,6 +123,25 @@ namespace easy_control_c_sharp
                 return false;
         }
 
+        public Bitmap GetPoseCombinationImage(PoseCombination poseCombination, PresentationModel presentationModel, Dictionary<Rectangle, Key> keyBoard, int keyBoardWidth, int keyBoardHeight)
+        {
+            Bitmap canvas = new Bitmap(300, 50);
+            Graphics graphics = Graphics.FromImage(canvas);
+            graphics.Clear(Color.White);
+            if (poseCombination.GetPoseLength() != 0)
+                graphics.DrawImage(presentationModel.GetImage(poseCombination.GetPose(0), 50, 50), 0, 0);
+            for (int i = 1; i < poseCombination.GetPoseLength(); i++)
+                graphics.DrawImage(presentationModel.GetImage(poseCombination.GetPose(i), 50, 50), 52 * i, 0);
+            graphics.DrawString("➜", new Font("Arial", 30), Brushes.Black, poseCombination.GetPoseLength() * 50, 5);
+            for (int i = 0; i < poseCombination.GetKeyLength(); i++)
+            {
+                Rectangle section = keyBoard.FirstOrDefault(x => x.Value.Code == poseCombination.GetKey(i).Code).Key;
+                Bitmap cutImage = cutImageMethod.CutImage(presentationModel.GetImage("keyboard", keyBoardWidth, keyBoardHeight), section);
+                graphics.DrawImage(cutImage, (poseCombination.GetPoseLength() + i + 1) * 50, 5);
+            }
+            return canvas;
+        }
+
         public void AddPoseCombination(Window window, PoseCombination poseCombination, bool isEdit, int editIndex)
         {
             if (isEdit)
