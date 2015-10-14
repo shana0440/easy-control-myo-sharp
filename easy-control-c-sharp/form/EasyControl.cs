@@ -16,6 +16,7 @@ namespace easy_control_c_sharp
         {
             InitializeComponent();
             _presentationModel = model;
+            _presentationModel.easyControlLoad("Test.xml");
             BindingSource source = new BindingSource(_presentationModel.GetModeList(), null);
             _modeGridView.DataSource = source;
 
@@ -44,6 +45,7 @@ namespace easy_control_c_sharp
         //右下角圖示，結束視窗
         private void ClickMenuStripClose(object sender, EventArgs e)
         {
+            _presentationModel.easyControlSave("Test.xml");
             Close();
         }
 
@@ -68,7 +70,7 @@ namespace easy_control_c_sharp
         //點擊軟體GridView事件
         private void ModeGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _presentationModel.ProcessModeGridViewCell(e.RowIndex, e.ColumnIndex, _presentationModel);
+            _presentationModel.ProcessModeGridViewCell(e.RowIndex, e.ColumnIndex);
         }
 
         //新增軟體button click事件
@@ -81,6 +83,11 @@ namespace easy_control_c_sharp
         private void ModeGridViewCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             _presentationModel.ProcessModeGridViewCellFormatting(e.ColumnIndex, _modeGridView);
+        }
+
+        private void CloseForm(object sender, FormClosedEventArgs e)
+        {
+            _presentationModel.easyControlSave("Test.xml");
         }
     }
 }
