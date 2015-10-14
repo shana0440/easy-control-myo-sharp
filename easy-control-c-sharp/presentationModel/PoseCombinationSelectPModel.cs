@@ -22,18 +22,18 @@ namespace easy_control_c_sharp
             poseCombination.IsContinue = editPoseCombination.IsContinue;
         }
 
-        public void ProcessPosePictureBoxPaint(Graphics graphics, PoseCombination poseCombination, PresentationModel _presentationModel)
+        public void ProcessPosePictureBoxPaint(Graphics graphics, PoseCombination poseCombination)
         {
             if (poseCombination.GetPoseLength() != 0)
-                graphics.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(0), 75, 75), 10, 260);
+                graphics.DrawImage(GetImage(poseCombination.GetPose(0), 75, 75), 10, 260);
             for (int i = 1; i < poseCombination.GetPoseLength(); i++)
             {
                 graphics.DrawString("+", new Font("Arial", 30), Brushes.SkyBlue, 110 * i - 25, 275);
-                graphics.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(i), 75, 75), 10 + 110 * i, 260);
+                graphics.DrawImage(GetImage(poseCombination.GetPose(i), 75, 75), 10 + 110 * i, 260);
             }
         }
 
-        public void ProcessKeyPictureBoxPaint(Graphics graphics, PoseCombination poseCombination, Dictionary<Rectangle, Key> keyBoard)
+        public void ProcessKeyPictureBoxPaint(Graphics graphics, PoseCombination poseCombination)
         {
             SolidBrush redBrush = new SolidBrush(Color.FromArgb(100, 255, 0, 0));
             SolidBrush greenBrush = new SolidBrush(Color.FromArgb(100, 0, 255, 0));
@@ -45,25 +45,25 @@ namespace easy_control_c_sharp
                 {
                     //design by http://stackoverflow.com/questions/2444033/get-dictionary-key-by-value
                     case KeyStates.Press:
-                        graphics.FillRectangle(redBrush, keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
+                        graphics.FillRectangle(redBrush, _keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
                         break;
                     case KeyStates.Hold:
-                        graphics.FillRectangle(greenBrush, keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
+                        graphics.FillRectangle(greenBrush, _keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
                         break;
                     case KeyStates.Release:
-                        graphics.FillRectangle(blueBrush, keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
+                        graphics.FillRectangle(blueBrush, _keyBoard.FirstOrDefault(x => x.Value.Code == key.Code).Key);
                         break;
                 }
             }
         }
 
-        public void ProcessClickPosePictureBox(int locationX, int locationY, PoseCombination poseCombination, Dictionary<Rectangle, string> poseBoard)
+        public void ProcessClickPosePictureBox(int locationX, int locationY, PoseCombination poseCombination)
         {
-            foreach (Rectangle poseRect in poseBoard.Keys)
+            foreach (Rectangle poseRect in _poseBoard.Keys)
             {
                 if (poseRect.Contains(locationX, locationY))
                 {
-                    poseCombination.TogglePose(poseBoard[poseRect]);
+                    poseCombination.TogglePose(_poseBoard[poseRect]);
                 }
             }
             for (int i = 0; i < poseCombination.GetPoseLength(); i++)
@@ -74,13 +74,13 @@ namespace easy_control_c_sharp
             }
         }
 
-        public void ProcessClickKeyPictureBox(int locationX, int locationY, PoseCombination poseCombination, Dictionary<Rectangle, Key> keyBoard)
+        public void ProcessClickKeyPictureBox(int locationX, int locationY, PoseCombination poseCombination)
         {
-            foreach (Rectangle keyRect in keyBoard.Keys)
+            foreach (Rectangle keyRect in _keyBoard.Keys)
             {
                 if (keyRect.Contains(locationX, locationY))
                 {
-                    OpenForm(keyBoard[keyRect], poseCombination);
+                    OpenForm(_keyBoard[keyRect], poseCombination);
                 }
             }
         }
@@ -123,21 +123,21 @@ namespace easy_control_c_sharp
                 return false;
         }
 
-        public Bitmap GetPoseCombinationImage(PoseCombination poseCombination, PresentationModel presentationModel, Dictionary<Rectangle, Key> keyBoard, int keyBoardWidth, int keyBoardHeight)
+        public Bitmap GetPoseCombinationImage(PoseCombination poseCombination, int keyBoardWidth, int keyBoardHeight)
         {
             Bitmap canvas = new Bitmap(300, 50);
             Graphics graphics = Graphics.FromImage(canvas);
             graphics.Clear(SystemColors.Control);
             if (poseCombination.GetPoseLength() != 0)
-                graphics.DrawImage(presentationModel.GetImage(poseCombination.GetPose(0), 50, 50), 0, 0);
+                graphics.DrawImage(GetImage(poseCombination.GetPose(0), 50, 50), 0, 0);
             for (int i = 1; i < poseCombination.GetPoseLength(); i++)
-                graphics.DrawImage(presentationModel.GetImage(poseCombination.GetPose(i), 50, 50), 52 * i, 0);
-            graphics.DrawString("➜", new Font("Arial", 30), Brushes.Black, poseCombination.GetPoseLength() * 50, 5);
+                graphics.DrawImage(GetImage(poseCombination.GetPose(i), 50, 50), 52 * i, 0);
+            graphics.DrawString("➜", new Font("Arial", 27), Brushes.Black, poseCombination.GetPoseLength() * 50, 5);
             for (int i = 0; i < poseCombination.GetKeyLength(); i++)
             {
-                Rectangle section = keyBoard.FirstOrDefault(x => x.Value.Code == poseCombination.GetKey(i).Code).Key;
-                Bitmap cutImage = cutImageMethod.CutImage(presentationModel.GetImage("keyboard", keyBoardWidth, keyBoardHeight), section);
-                graphics.DrawImage(cutImage, (poseCombination.GetPoseLength() + i + 1) * 50, 5);
+                Rectangle section = _keyBoard.FirstOrDefault(x => x.Value.Code == poseCombination.GetKey(i).Code).Key;
+                Bitmap cutImage = cutImageMethod.CutImage(GetImage("keyboard", keyBoardWidth, keyBoardHeight), section);
+                graphics.DrawImage(cutImage, (poseCombination.GetPoseLength() + i + 1) * 50, 7);
             }
             return canvas;
         }
