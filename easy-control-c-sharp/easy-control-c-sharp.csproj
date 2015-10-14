@@ -91,6 +91,7 @@
       <DependentUpon>PoseCombinationSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="model.cs" />
+    <Compile Include="presentationModel\CutImageMethod.cs" />
     <Compile Include="presentationModel\EasyControlPModel.cs" />
     <Compile Include="presentationModel\ModeAddPModel.cs" />
     <Compile Include="presentationModel\ModeDetailPModel.cs" />
