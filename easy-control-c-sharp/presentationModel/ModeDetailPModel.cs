@@ -8,11 +8,11 @@ namespace easy_control_c_sharp
 {
     public partial class PresentationModel
     {
-        public void ProcessPoseCombinationGridViewCell(Window window, int rowIndex, int columnIndex, PresentationModel presentationModel)
+        public void ProcessPoseCombinationGridViewCell(Window window, int rowIndex, int columnIndex)
         {
             if (rowIndex >= 0)
             {
-                PoseCombinationSelect poseCombinationForm = new PoseCombinationSelect(presentationModel, window, rowIndex);
+                PoseCombinationSelect poseCombinationForm = new PoseCombinationSelect(this, window, rowIndex);
                 switch (columnIndex)
                 {
                     // this is delete button, we add delete columns first, then format binding columns
@@ -21,7 +21,7 @@ namespace easy_control_c_sharp
                         window.RemovePoseCombinationByIndex(rowIndex);
                         break;
 
-                    case 2:
+                    case 4:
                         window.GetPoseCombination(rowIndex).IsEnable = !window.GetPoseCombination(rowIndex).IsEnable;
                         break;
 
