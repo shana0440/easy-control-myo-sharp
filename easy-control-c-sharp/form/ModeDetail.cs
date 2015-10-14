@@ -59,7 +59,7 @@ namespace easy_control_c_sharp
         //點擊手勢配對GridView事件
         private void PoseCombinationGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _presentationModel.ProcessPoseCombinationGridViewCell(_window, e.RowIndex, e.ColumnIndex, _presentationModel);
+            _presentationModel.ProcessPoseCombinationGridViewCell(_window, e.RowIndex, e.ColumnIndex);
         }
 
         //關閉視窗時，將此mode的開啟狀態設為false(避免同樣mode的ModeDetail視窗重覆開啟)
