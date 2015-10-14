@@ -47,12 +47,12 @@ namespace easy_control_c_sharp
             }
         }
 
-        public void ProcessModeGridViewCell(int rowIndex, int columnIndex, PresentationModel presentationModel)
+        public void ProcessModeGridViewCell(int rowIndex, int columnIndex)
         {
             if (rowIndex >= 0)
             {
-                Window window = presentationModel.GetModeByIndex(rowIndex);
-                ModeDetail detailForm = new ModeDetail(presentationModel, window);
+                Window window = GetModeByIndex(rowIndex);
+                ModeDetail detailForm = new ModeDetail(this, window);
                 detailForm.Text = window.Name;
                 switch (columnIndex)
                 {
