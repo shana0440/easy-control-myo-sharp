@@ -34,6 +34,13 @@ namespace easy_control_c_sharp
         private void ClickLinkButton(object sender, EventArgs e)
         {
             _imageTextBox.Text = _presentationModel.ProcessOpenFile();
+            CheckSaveButton();
+        }
+
+        //改變nameTextBox的內容時觸發
+        private void ChangeText(object sender, EventArgs e)
+        {
+            CheckSaveButton();
         }
 
         //取得軟體的名子
@@ -46,6 +53,12 @@ namespace easy_control_c_sharp
         public string GetImageFile()
         {
             return _imageTextBox.Text.ToString();
+        }
+
+        //是否啟用SaveButton
+        private void CheckSaveButton()
+        {
+            _saveButton.Enabled = _presentationModel.IsSaveButtonEnable(_nameTextBox, _imageTextBox);
         }
     }
 }

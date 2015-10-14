@@ -68,6 +68,7 @@
             // _saveButton
             // 
             this._saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this._saveButton.Enabled = false;
             this._saveButton.Location = new System.Drawing.Point(104, 66);
             this._saveButton.Name = "_saveButton";
             this._saveButton.Size = new System.Drawing.Size(75, 23);
@@ -81,9 +82,11 @@
             this._nameTextBox.Name = "_nameTextBox";
             this._nameTextBox.Size = new System.Drawing.Size(100, 22);
             this._nameTextBox.TabIndex = 4;
+            this._nameTextBox.TextChanged += new System.EventHandler(this.ChangeText);
             // 
             // _imageTextBox
             // 
+            this._imageTextBox.Enabled = false;
             this._imageTextBox.Location = new System.Drawing.Point(79, 38);
             this._imageTextBox.Name = "_imageTextBox";
             this._imageTextBox.Size = new System.Drawing.Size(100, 22);

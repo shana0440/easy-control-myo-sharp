@@ -19,5 +19,13 @@ namespace easy_control_c_sharp
             }
             return "";
         }
+
+        public bool IsSaveButtonEnable(TextBox nameTextBox, TextBox imagePathTextBox)
+        {
+            if (nameTextBox.Text.ToString() != "" && imagePathTextBox.Text.ToString() != "")
+                return true;
+            else
+                return false;
+        }
     }
 }
