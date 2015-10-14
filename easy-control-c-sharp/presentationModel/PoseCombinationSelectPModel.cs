@@ -24,21 +24,13 @@ namespace easy_control_c_sharp
 
         public void ProcessPosePictureBoxPaint(Graphics graphics, PoseCombination poseCombination, PresentationModel _presentationModel)
         {
-            Bitmap bmp = new Bitmap(300, 50);
-            Graphics g = Graphics.FromImage(bmp);
-            g.Clear(Color.White);
             if (poseCombination.GetPoseLength() != 0)
-            {
                 graphics.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(0), 75, 75), 10, 260);
-                g.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(0), 50, 50), 0, 0);
-            }
             for (int i = 1; i < poseCombination.GetPoseLength(); i++)
             {
                 graphics.DrawString("+", new Font("Arial", 30), Brushes.SkyBlue, 110 * i - 25, 275);
                 graphics.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(i), 75, 75), 10 + 110 * i, 260);
-                g.DrawImage(_presentationModel.GetImage(poseCombination.GetPose(i), 50, 50), 52 * i, 0);
             }
-            poseCombination.GetImage = bmp;
         }
 
         public void ProcessKeyPictureBoxPaint(Graphics graphics, PoseCombination poseCombination, Dictionary<Rectangle, Key> keyBoard)
