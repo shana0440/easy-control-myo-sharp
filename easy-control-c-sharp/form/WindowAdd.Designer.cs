@@ -1,6 +1,6 @@
 ﻿namespace easy_control_c_sharp
 {
-    partial class ModeAdd
+    partial class WindowAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -40,18 +40,20 @@
             // _nameLabel
             // 
             this._nameLabel.AutoSize = true;
+            this._nameLabel.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this._nameLabel.Location = new System.Drawing.Point(13, 13);
             this._nameLabel.Name = "_nameLabel";
-            this._nameLabel.Size = new System.Drawing.Size(32, 12);
+            this._nameLabel.Size = new System.Drawing.Size(43, 16);
             this._nameLabel.TabIndex = 0;
             this._nameLabel.Text = "Name";
             // 
             // _imageLabel
             // 
             this._imageLabel.AutoSize = true;
+            this._imageLabel.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this._imageLabel.Location = new System.Drawing.Point(13, 38);
             this._imageLabel.Name = "_imageLabel";
-            this._imageLabel.Size = new System.Drawing.Size(34, 12);
+            this._imageLabel.Size = new System.Drawing.Size(44, 16);
             this._imageLabel.TabIndex = 1;
             this._imageLabel.Text = "Image";
             // 
@@ -102,7 +104,7 @@
             this._linkButton.UseVisualStyleBackColor = true;
             this._linkButton.Click += new System.EventHandler(this.ClickLinkButton);
             // 
-            // ModeAdd
+            // WindowAdd
             // 
             this.AcceptButton = this._saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -116,7 +118,7 @@
             this.Controls.Add(this._imageLabel);
             this.Controls.Add(this._nameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ModeAdd";
+            this.Name = "WindowAdd";
             this.Text = "ModeAdd";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -12,19 +12,19 @@ namespace easy_control_c_sharp
     public partial class PresentationModel
     {
         // Mode method
-        public BindingList<Window> GetModeList()
+        public BindingList<Window> GetWindowList()
         {
-            return _model.GetModeList();
+            return _model.GetWindowList();
         }
 
-        public Window AddMode(string name)
+        public Window AddWindow(string name)
         {
-            return _model.AddMode(name);
+            return _model.AddWindow(name);
         }
 
-        public void RemoveMode(Window window)
+        public void RemoveWindow(Window window)
         {
-            _model.RemoveMode(window);
+            _model.RemoveWindow(window);
         }
 
         public void ProcessResizeForm(FormWindowState winState)
@@ -47,35 +47,40 @@ namespace easy_control_c_sharp
             }
         }
 
-        public void ProcessModeGridViewCell(int rowIndex, int columnIndex)
+        public void ProcessWindowGridViewCell(int rowIndex, int columnIndex)
         {
             if (rowIndex >= 0)
             {
-                Window window = GetModeByIndex(rowIndex);
-                ModeDetail detailForm = new ModeDetail(this, window);
+                Window window = GetWindowByIndex(rowIndex);
+                WindowDetail detailForm = new WindowDetail(this, window);
                 detailForm.Text = window.Name;
+                Console.WriteLine(columnIndex);
                 switch (columnIndex)
                 {
                     // this is delete button, we add delete columns first, then format binding columns
                     // so delete button columns index while be 0, even we setting displayIndex is 2
                     case 0:
-                        CloseModeDetailForm(window);
-                        RemoveMode(window);
+                        CloseWindowDetailForm(window);
+                        RemoveWindow(window);
                         RemoveImage(window.Name);
                         break;
 
-                    case 3:
+                    case 1:
+
+                        break;
+
+                    case 4:
                         window.IsEnable = !window.IsEnable;
                         break;
 
                     default:
-                        OpenModeDetailForm(window, detailForm);
+                        OpenWindowDetailForm(window, detailForm);
                         break;
                 }
             }
         }
 
-        private void OpenModeDetailForm(Window window, Form detailForm)
+        private void OpenWindowDetailForm(Window window, Form detailForm)
         {
             if (!window.IsOpen)
             {
@@ -90,9 +95,9 @@ namespace easy_control_c_sharp
         }
 
         // Detail Form method
-        public Window GetModeByIndex(int index)
+        public Window GetWindowByIndex(int index)
         {
-            return _model.GetModeByIndex(index);
+            return _model.GetWindowByIndex(index);
         }
 
         public void OpenDetailForm(Window window)
@@ -100,7 +105,7 @@ namespace easy_control_c_sharp
             window.IsOpen = true;
         }
 
-        private void CloseModeDetailForm(Window window)
+        private void CloseWindowDetailForm(Window window)
         {
             Form openedForm = ExistForm(window);
             if (openedForm != null)
@@ -120,7 +125,7 @@ namespace easy_control_c_sharp
             return null;
         }
 
-        public void ProcessAddForm(ModeAdd modeAddForm)
+        public void ProcessAddForm(WindowAdd modeAddForm)
         {
             DialogResult result = modeAddForm.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
@@ -131,12 +136,12 @@ namespace easy_control_c_sharp
                 if (!File.Exists(ownImagePath))
                     File.Copy(modeAddForm.GetImageFile(), ownImagePath);
                 // if mode is exist, must pop alert
-                Window window = AddMode(modeAddForm.GetModeName());
+                Window window = AddWindow(modeAddForm.GetModeName());
                 window.SetImage(ownImagePath);
             }
         }
 
-        public void ProcessModeGridViewCellFormatting(int columnIndex, DataGridView modeGridView)
+        public void ProcessWindowGridViewCellFormatting(int columnIndex, DataGridView modeGridView)
         {
             string columnName = modeGridView.Columns[columnIndex].Name;
             switch (columnName)
@@ -151,6 +156,9 @@ namespace easy_control_c_sharp
                     modeGridView.Columns[columnIndex].Width = 50;
                     break;
                 case "deleteBtn":
+                    modeGridView.Columns[columnIndex].Width = 50;
+                    break;
+                case "editBtn":
                     modeGridView.Columns[columnIndex].Width = 50;
                     break;
                 default:

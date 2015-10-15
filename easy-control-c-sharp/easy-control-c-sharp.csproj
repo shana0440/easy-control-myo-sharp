@@ -66,23 +66,23 @@
     <Compile Include="form\easyControl.Designer.cs">
       <DependentUpon>EasyControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\KeyMode.cs">
+    <Compile Include="form\KeyState.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\KeyMode.Designer.cs">
-      <DependentUpon>KeyMode.cs</DependentUpon>
+    <Compile Include="form\KeyState.Designer.cs">
+      <DependentUpon>KeyState.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\ModeAdd.cs">
+    <Compile Include="form\WindowAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\ModeAdd.Designer.cs">
-      <DependentUpon>ModeAdd.cs</DependentUpon>
+    <Compile Include="form\WindowAdd.Designer.cs">
+      <DependentUpon>WindowAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\ModeDetail.cs">
+    <Compile Include="form\WindowDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\ModeDetail.Designer.cs">
-      <DependentUpon>ModeDetail.cs</DependentUpon>
+    <Compile Include="form\WindowDetail.Designer.cs">
+      <DependentUpon>WindowDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="form\PoseCombinationSelect.cs">
       <SubType>Form</SubType>
@@ -93,8 +93,8 @@
     <Compile Include="model.cs" />
     <Compile Include="presentationModel\CutImageMethod.cs" />
     <Compile Include="presentationModel\EasyControlPModel.cs" />
-    <Compile Include="presentationModel\ModeAddPModel.cs" />
-    <Compile Include="presentationModel\ModeDetailPModel.cs" />
+    <Compile Include="presentationModel\WindowAddPModel.cs" />
+    <Compile Include="presentationModel\WindowDetailPModel.cs" />
     <Compile Include="presentationModel\PoseCombinationSelectPModel.cs" />
     <Compile Include="presentationModel\PresentationModel.cs" />
     <Compile Include="Program.cs" />
@@ -102,14 +102,14 @@
     <EmbeddedResource Include="form\easyControl.resx">
       <DependentUpon>EasyControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\KeyMode.resx">
-      <DependentUpon>KeyMode.cs</DependentUpon>
+    <EmbeddedResource Include="form\KeyState.resx">
+      <DependentUpon>KeyState.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\ModeAdd.resx">
-      <DependentUpon>ModeAdd.cs</DependentUpon>
+    <EmbeddedResource Include="form\WindowAdd.resx">
+      <DependentUpon>WindowAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\ModeDetail.resx">
-      <DependentUpon>ModeDetail.cs</DependentUpon>
+    <EmbeddedResource Include="form\WindowDetail.resx">
+      <DependentUpon>WindowDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\PoseCombinationSelect.resx">
       <DependentUpon>PoseCombinationSelect.cs</DependentUpon>

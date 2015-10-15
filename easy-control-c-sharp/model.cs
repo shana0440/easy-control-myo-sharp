@@ -9,7 +9,7 @@ namespace easy_control_c_sharp
 {
     public class Model
     {
-        private BindingList<Window> _modeList = new BindingList<Window>();
+        private BindingList<Window> _windowList = new BindingList<Window>();
         private PoseManager _poseManager = new PoseManager();
         private MyoController _myoController;
         public Model()
@@ -18,38 +18,38 @@ namespace easy_control_c_sharp
         }
 
         // create a new mode, and adding mode list
-        public Window AddMode(string name)
+        public Window AddWindow(string name)
         {
             Window window = new Window(name);
-            _modeList.Add(window);
+            _windowList.Add(window);
             _poseManager.AddWindow(window);
             return window;
         }
 
         //回傳所有已加入的軟體
-        public BindingList<Window> GetModeList()
+        public BindingList<Window> GetWindowList()
         {
-            return _modeList;
+            return _windowList;
         }
         
         //回傳軟體數量
-        public int GetModeLength()
+        public int GetWindowLength()
         {
-            return _modeList.Count;
+            return _windowList.Count;
         }
         
         //刪除操縱軟體
-        public void RemoveMode(Window window)
+        public void RemoveWindow(Window window)
         {
-            _modeList.Remove(window);
+            _windowList.Remove(window);
         }
 
-        public int GetModeIndex(Window window)
+        public int GetWindowIndex(Window window)
         {
             int index = -1;
-            for (index = 0; index < _modeList.Count; index++)
+            for (index = 0; index < _windowList.Count; index++)
             {
-                if (_modeList[index] == window)
+                if (_windowList[index] == window)
                 {
                     break;
                 }
@@ -57,9 +57,9 @@ namespace easy_control_c_sharp
             return index;
         }
 
-        public Window GetModeByIndex(int index)
+        public Window GetWindowByIndex(int index)
         {
-            return _modeList[index];
+            return _windowList[index];
         }
     }
 }

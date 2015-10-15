@@ -9,13 +9,21 @@ using System.Windows.Forms;
 
 namespace easy_control_c_sharp
 {
-    public partial class ModeAdd : Form
+    public partial class WindowAdd : Form
     {
         PresentationModel _presentationModel;
-        public ModeAdd(PresentationModel presentationModel)
+        Window _window;
+        public WindowAdd(PresentationModel presentationModel)
         {
             InitializeComponent();
             _presentationModel = presentationModel;
+        }
+
+        public WindowAdd(PresentationModel presentationModel, Window window)
+        {
+            InitializeComponent();
+            _presentationModel = presentationModel;
+            _window = window;
         }
 
         //按下Save按鈕，視窗關閉
