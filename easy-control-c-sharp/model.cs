@@ -61,5 +61,10 @@ namespace easy_control_c_sharp
         {
             return _modeList[index];
         }
+
+        public void LockMyo()
+        {
+            _myoController.LockMyo();
+        }
     }
 }

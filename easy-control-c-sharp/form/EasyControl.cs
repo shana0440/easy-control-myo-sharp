@@ -88,6 +88,7 @@ namespace easy_control_c_sharp
         private void CloseForm(object sender, FormClosedEventArgs e)
         {
             _presentationModel.easyControlSave("Test.xml");
+            _presentationModel.LockMyo();
         }
     }
 }

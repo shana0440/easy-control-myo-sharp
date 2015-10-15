@@ -388,5 +388,10 @@ namespace easy_control_c_sharp
                 }
             }
         }
+
+        public void LockMyo()
+        {
+            _model.LockMyo();
+        }
     }
 }

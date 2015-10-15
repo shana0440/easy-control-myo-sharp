@@ -120,6 +120,14 @@ namespace easy_control_c_sharp
             }
         }
 
+        public void LockMyo()
+        {
+            foreach (Myo myo in _myoHub.Myos)
+            {
+                myo.Lock();
+            }
+        }
+
         private void ReceivePose(string pose)
         {
             if (_onReceive)
