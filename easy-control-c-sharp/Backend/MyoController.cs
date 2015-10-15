@@ -42,32 +42,6 @@ namespace easy_control_c_sharp
             {
                 throw new Exception("Unable to find a Myo!");
             }
-            AddDefaultPose();
-        }
-
-        private void AddDefaultPose()
-        {
-            Window foobar2000 = new Window("youtube");
-            PoseCombination pose1 = new PoseCombination();
-            pose1.AddPose("FingersSpread");
-            pose1.AddKey(VirtualKeyCode.SPACE, KeyStates.Press);
-
-            PoseCombination pose2 = new PoseCombination();
-            pose2.AddPose("fist");
-            pose2.AddPose("pitchUp");
-            pose2.IsContinue = true;
-            pose2.AddKey(VirtualKeyCode.NEXT, KeyStates.Press);
-
-            PoseCombination pose3 = new PoseCombination();
-            pose3.AddPose("fist");
-            pose3.AddPose("pitchDown");
-            pose3.IsContinue = true;
-            pose3.AddKey(VirtualKeyCode.PRIOR, KeyStates.Press);
-
-            foobar2000.AddPoseCombination(pose1);
-            foobar2000.AddPoseCombination(pose2);
-            foobar2000.AddPoseCombination(pose3);
-            _poseManager.AddWindow(foobar2000);
         }
 
         private void MyoConnected(object sender, MyoEventArgs e)
