@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Xml;
 using WindowsInput;
+using System.IO;
 
 namespace easy_control_c_sharp
 {
@@ -317,6 +318,8 @@ namespace easy_control_c_sharp
         //讀檔處理
         public void easyControlLoad(string file)
         {
+            if (!File.Exists(file))
+                return;
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(file);
             XmlNodeList windowNodeLists = xmlDoc.SelectNodes("easy-control/window");
