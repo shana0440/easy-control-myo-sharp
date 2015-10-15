@@ -80,7 +80,7 @@ namespace easy_control_c_sharp
             return _imagePath;
         }
 
-        // Image property
+        // let binding source can read this property
         public Bitmap GetImage
         {
             get
