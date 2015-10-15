@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace easy_control_c_sharp
 {
     public class PoseManager
     {
-        private List<Window> _windowList = new List<Window>();
+        private BindingList<Window> _windowList = new BindingList<Window>();
         private List<PoseCombination> _filter = new List<PoseCombination>();
         private string _globalPoseString = "globalPose";
         private string _onSystemString = "onSystem";
@@ -24,16 +25,7 @@ namespace easy_control_c_sharp
 
         public void SetFocusWindow(string name)
         {
-            _focusWindow = _windowList.Find(
-                delegate (Window w)
-                {
-                    return name.ToLower().IndexOf(w.Name.ToLower()) != -1;
-                }
-            );
-            if (_focusWindow == null)
-            {
-                //throw new Exception("this window not has any pose combination");
-            }
+            _focusWindow = _windowList.FirstOrDefault(item => name.ToLower().IndexOf(item.Name.ToLower()) != -1);
         }
 
         /**
