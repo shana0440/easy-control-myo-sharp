@@ -50,8 +50,8 @@ namespace easy_control_c_sharp
             e.Myo.Unlock(UnlockType.Hold);
             e.Myo.PoseChanged += OnPose;
             e.Myo.OrientationDataAcquired += OnOrientationData;
-            //e.Myo.Locked += OnLocked;
-            //e.Myo.Unlocked += OnUnlocked;
+            e.Myo.Locked += OnLocked;
+            e.Myo.Unlocked += OnUnlocked;
             //e.Myo.EmgDataAcquired += OnEmgData;
             //e.Myo.SetEmgStreaming(true);
         }
@@ -61,10 +61,23 @@ namespace easy_control_c_sharp
             Console.WriteLine("Myo Disconnented!!");
             e.Myo.PoseChanged -= OnPose;
             e.Myo.OrientationDataAcquired -= OnOrientationData;
-            //e.Myo.Locked -= OnLocked;
-            //e.Myo.Unlocked -= OnUnlocked;
+            e.Myo.Locked -= OnLocked;
+            e.Myo.Unlocked -= OnUnlocked;
             //e.Myo.EmgDataAcquired -= OnEmgData;
             //e.Myo.SetEmgStreaming(false);
+        }
+
+        private void OnLocked(object sender, MyoEventArgs e)
+        {
+            _isLock = true;
+            Console.WriteLine("Myo Locked");
+        }
+
+        private void OnUnlocked(object sender, MyoEventArgs e)
+        {
+            _isLock = false;
+            e.Myo.Unlock(UnlockType.Hold);
+            Console.WriteLine("Myo UnLocked");
         }
 
         private void OnPose(object sender, PoseEventArgs e)
@@ -73,15 +86,9 @@ namespace easy_control_c_sharp
             {
                 // use doubletap trigger myo lock
                 if (_isLock)
-                {
                     e.Myo.Unlock(UnlockType.Hold);
-                    _isLock = false;
-                }
                 else
-                {
                     e.Myo.Lock();
-                    _isLock = true;
-                }
             }
             else if (e.Myo.Pose == Pose.Rest)
             {
