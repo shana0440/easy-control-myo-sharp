@@ -108,7 +108,8 @@ namespace easy_control_c_sharp
                 }
                 catch (Exception)
                 {
-                    throw new Exception("this window is not defined on list");
+                    poseCollection = new List<PoseCombination>();
+                    //throw new Exception("this window is not defined on list");
                 }
             }
 
