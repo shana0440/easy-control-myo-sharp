@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace easy_control_c_sharp
 {
-    public partial class ModeDetail : Form
+    public partial class WindowDetail : Form
     {
         PresentationModel _presentationModel;
         Window _window;
-        public ModeDetail(PresentationModel model, Window window)
+        public WindowDetail(PresentationModel model, Window window)
         {
             InitializeComponent();
             _presentationModel = model;
@@ -43,10 +43,10 @@ namespace easy_control_c_sharp
         }
 
         //modePictureBox重畫
-        private void ModePictureBoxOnPaint(object sender, PaintEventArgs e)
+        private void WindowPictureBoxOnPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(_window.GetImage, 0, 0);
-            e.Graphics.DrawString(_window.Name, new Font("Arial", 25), Brushes.DarkRed, 60, 8);
+            e.Graphics.DrawString(_window.Name, new Font("微軟正黑體", 25), Brushes.Black, 60, 8);
         }
 
         //新增手勢配對button click事件
@@ -63,7 +63,7 @@ namespace easy_control_c_sharp
         }
 
         //關閉視窗時，將此mode的開啟狀態設為false(避免同樣mode的ModeDetail視窗重覆開啟)
-        private void ModeDetailFormClosed(object sender, FormClosedEventArgs e)
+        private void WindowDetailFormClosed(object sender, FormClosedEventArgs e)
         {
             _window.IsOpen = false;
         }

@@ -268,10 +268,12 @@ namespace easy_control_c_sharp
         //存檔處理
         public void easyControlSave(string file)
         {
+            if (_model.GetWindowLength() == 0)
+                return;
             XmlDocument save = new XmlDocument();
             XmlElement easy_control = save.CreateElement("easy-control");
             save.AppendChild(easy_control);
-            foreach (Window window in _model.GetModeList())
+            foreach (Window window in _model.GetWindowList())
             {
                 XmlElement win = save.CreateElement("window");
                 win.SetAttribute("windowName", window.Name);
@@ -328,7 +330,7 @@ namespace easy_control_c_sharp
                 string windowName = windowNode.Attributes["windowName"].Value;
                 string imagePath = windowNode.Attributes["imagePath"].Value;
                 string winIsEnable = windowNode.Attributes["isEnable"].Value;
-                Window window = _model.AddMode(windowName);
+                Window window = _model.AddWindow(windowName);
                 window.SetImage(imagePath);
                 if (winIsEnable == "True")
                     window.IsEnable = true;

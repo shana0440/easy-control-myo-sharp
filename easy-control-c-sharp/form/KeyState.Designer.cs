@@ -1,6 +1,6 @@
 ﻿namespace easy_control_c_sharp
 {
-    partial class KeyMode
+    partial class KeyState
     {
         /// <summary>
         /// Required designer variable.

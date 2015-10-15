@@ -16,9 +16,9 @@ namespace easy_control_c_sharp
         {
             InitializeComponent();
             _presentationModel = model;
-            _presentationModel.easyControlLoad("Test.xml");
-            BindingSource source = new BindingSource(_presentationModel.GetModeList(), null);
-            _modeGridView.DataSource = source;
+            _presentationModel.easyControlLoad("Save.xml");
+            BindingSource source = new BindingSource(_presentationModel.GetWindowList(), null);
+            _windowGridView.DataSource = source;
 
             // must be last line
             InitializeGridView();
@@ -45,7 +45,7 @@ namespace easy_control_c_sharp
         //右下角圖示，結束視窗
         private void ClickMenuStripClose(object sender, EventArgs e)
         {
-            _presentationModel.easyControlSave("Test.xml");
+            _presentationModel.easyControlSave("Save.xml");
             Close();
         }
 
@@ -60,34 +60,43 @@ namespace easy_control_c_sharp
             deleteBtn.Width = 50;
             deleteBtn.DisplayIndex = 2;
             
-            _modeGridView.Columns.Add(deleteBtn);
-            _modeGridView.Columns["GetImage"].HeaderText = "icon";
-            _modeGridView.Columns["IsEnable"].HeaderText = "enable";
-            _modeGridView.Columns["Name"].HeaderText = "name";
-            _modeGridView.Columns["IsOpen"].Visible = false;
+            _windowGridView.Columns.Add(deleteBtn);
+            DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
+            editBtn.Text = "Edit";
+            editBtn.Name = "editBtn";
+            editBtn.UseColumnTextForButtonValue = true;
+            editBtn.HeaderText = "edit";
+            editBtn.Width = 50;
+            editBtn.DisplayIndex = 3;
+
+            _windowGridView.Columns.Add(editBtn);
+            _windowGridView.Columns["GetImage"].HeaderText = "icon";
+            _windowGridView.Columns["IsEnable"].HeaderText = "enable";
+            _windowGridView.Columns["Name"].HeaderText = "name";
+            _windowGridView.Columns["IsOpen"].Visible = false;
         }
 
         //點擊軟體GridView事件
         private void ModeGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _presentationModel.ProcessModeGridViewCell(e.RowIndex, e.ColumnIndex);
+            _presentationModel.ProcessWindowGridViewCell(e.RowIndex, e.ColumnIndex);
         }
 
         //新增軟體button click事件
         private void ClickAddButton(object sender, EventArgs e)
         {
-            ModeAdd modeAddForm = new ModeAdd(_presentationModel);
+            WindowAdd modeAddForm = new WindowAdd(_presentationModel);
             _presentationModel.ProcessAddForm(modeAddForm);
         }
 
         private void ModeGridViewCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            _presentationModel.ProcessModeGridViewCellFormatting(e.ColumnIndex, _modeGridView);
+            _presentationModel.ProcessWindowGridViewCellFormatting(e.ColumnIndex, _windowGridView);
         }
 
         private void CloseForm(object sender, FormClosedEventArgs e)
         {
-            _presentationModel.easyControlSave("Test.xml");
+            _presentationModel.easyControlSave("Save.xml");
             _presentationModel.LockMyo();
         }
     }

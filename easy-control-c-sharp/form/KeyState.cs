@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace easy_control_c_sharp
 {
-    public partial class KeyMode : Form
+    public partial class KeyState : Form
     {
         private KeyStates _keyMode;
-        public KeyMode()
+        public KeyState()
         {
             InitializeComponent();
             _keyMode = KeyStates.None;
