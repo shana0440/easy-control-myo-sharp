@@ -66,7 +66,7 @@ namespace easy_control_c_sharp
         //是否啟用SaveButton
         private void CheckSaveButton()
         {
-            _saveButton.Enabled = _presentationModel.IsSaveButtonEnable(_nameTextBox, _imageTextBox);
+            _saveButton.Enabled = _presentationModel.IsSaveButtonEnable(_nameTextBox);
         }
     }
 }
