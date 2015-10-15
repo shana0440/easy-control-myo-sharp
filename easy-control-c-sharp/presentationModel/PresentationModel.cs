@@ -268,6 +268,8 @@ namespace easy_control_c_sharp
         //存檔處理
         public void easyControlSave(string file)
         {
+            if (_model.GetModeLength() == 0)
+                return;
             XmlDocument save = new XmlDocument();
             XmlElement easy_control = save.CreateElement("easy-control");
             save.AppendChild(easy_control);

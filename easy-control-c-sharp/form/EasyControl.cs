@@ -16,7 +16,7 @@ namespace easy_control_c_sharp
         {
             InitializeComponent();
             _presentationModel = model;
-            _presentationModel.easyControlLoad("Test.xml");
+            _presentationModel.easyControlLoad("Save.xml");
             BindingSource source = new BindingSource(_presentationModel.GetModeList(), null);
             _modeGridView.DataSource = source;
 
@@ -45,7 +45,7 @@ namespace easy_control_c_sharp
         //右下角圖示，結束視窗
         private void ClickMenuStripClose(object sender, EventArgs e)
         {
-            _presentationModel.easyControlSave("Test.xml");
+            _presentationModel.easyControlSave("Save.xml");
             Close();
         }
 
@@ -87,7 +87,7 @@ namespace easy_control_c_sharp
 
         private void CloseForm(object sender, FormClosedEventArgs e)
         {
-            _presentationModel.easyControlSave("Test.xml");
+            _presentationModel.easyControlSave("Save.xml");
         }
     }
 }
