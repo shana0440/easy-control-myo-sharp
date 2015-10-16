@@ -30,8 +30,6 @@ namespace easy_control_c_sharp
                 new Tuple<string, string>("waveOut", "Image/waveOut.png"),
                 new Tuple<string, string>("waveIn", "Image/waveIn.png"),
                 new Tuple<string, string>("fist", "Image/fist.png"),
-                new Tuple<string, string>("rightArrow", "Image/rightArrow.png"),
-                new Tuple<string, string>("downArrow", "Image/downArrow.png"),
                 new Tuple<string, string>("keyboard", "Image/keyboard.png"),
             };
 
