@@ -125,41 +125,41 @@ namespace easy_control_c_sharp
             return null;
         }
 
-        public void ProcessAddForm(WindowAdd modeAddForm)
+        public void ProcessAddForm(WindowAdd windowAddForm)
         {
-            DialogResult result = modeAddForm.ShowDialog();
+            DialogResult result = windowAddForm.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                string modeName = modeAddForm.GetModeName();
-                string[] fileName = modeAddForm.GetImageFile().Split('\\');
+                string windowName = windowAddForm.GetWindowName();
+                string[] fileName = windowAddForm.GetImageFile().Split('\\');
                 string ownImagePath = "Image/" + fileName[fileName.Length - 1];
                 if (!File.Exists(ownImagePath))
-                    File.Copy(modeAddForm.GetImageFile(), ownImagePath);
+                    File.Copy(windowAddForm.GetImageFile(), ownImagePath);
                 // if mode is exist, must pop alert
-                Window window = AddWindow(modeAddForm.GetModeName());
+                Window window = AddWindow(windowAddForm.GetWindowName());
                 window.SetImage(ownImagePath);
             }
         }
 
-        public void ProcessWindowGridViewCellFormatting(int columnIndex, DataGridView modeGridView)
+        public void ProcessWindowGridViewCellFormatting(int columnIndex, DataGridView windowGridView)
         {
-            string columnName = modeGridView.Columns[columnIndex].Name;
+            string columnName = windowGridView.Columns[columnIndex].Name;
             switch (columnName)
             {
                 case "IsOpen":
-                    modeGridView.Columns[columnIndex].Visible = false;
+                    windowGridView.Columns[columnIndex].Visible = false;
                     break;
                 case "IsEnable":
-                    modeGridView.Columns[columnIndex].Width = 50;
+                    windowGridView.Columns[columnIndex].Width = 50;
                     break;
                 case "GetImage":
-                    modeGridView.Columns[columnIndex].Width = 50;
+                    windowGridView.Columns[columnIndex].Width = 50;
                     break;
                 case "deleteBtn":
-                    modeGridView.Columns[columnIndex].Width = 50;
+                    windowGridView.Columns[columnIndex].Width = 50;
                     break;
                 case "editBtn":
-                    modeGridView.Columns[columnIndex].Width = 50;
+                    windowGridView.Columns[columnIndex].Width = 50;
                     break;
                 default:
                     break;

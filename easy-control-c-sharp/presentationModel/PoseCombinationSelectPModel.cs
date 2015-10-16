@@ -93,11 +93,11 @@ namespace easy_control_c_sharp
             }
             else
             {
-                KeyState keyMode = new KeyState();
-                DialogResult result = keyMode.ShowDialog();
+                KeyState keyState = new KeyState();
+                DialogResult result = keyState.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    key.State = keyMode.GetKeyMode();
+                    key.State = keyState.GetKeyState();
                     poseCombination.ToggleKey(key);
                 }
             }

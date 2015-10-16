@@ -11,11 +11,11 @@ namespace easy_control_c_sharp
 {
     public partial class KeyState : Form
     {
-        private KeyStates _keyMode;
+        private KeyStates _keyState;
         public KeyState()
         {
             InitializeComponent();
-            _keyMode = KeyStates.None;
+            _keyState = KeyStates.None;
         }
 
         //點擊Press
@@ -24,7 +24,7 @@ namespace easy_control_c_sharp
             _press.Checked = true;
             _hold.Checked = false;
             _release.Checked = false;
-            _keyMode = KeyStates.Press;
+            _keyState = KeyStates.Press;
         }
 
         //點擊Hold
@@ -33,7 +33,7 @@ namespace easy_control_c_sharp
             _press.Checked = false;
             _hold.Checked = true;
             _release.Checked = false;
-            _keyMode = KeyStates.Hold;
+            _keyState = KeyStates.Hold;
         }
 
         //點擊Release
@@ -42,7 +42,7 @@ namespace easy_control_c_sharp
             _press.Checked = false;
             _hold.Checked = false;
             _release.Checked = true;
-            _keyMode = KeyStates.Release;
+            _keyState = KeyStates.Release;
         }
 
         //按鈕事件(確認手勢配對按鈕)
@@ -52,9 +52,9 @@ namespace easy_control_c_sharp
         }
 
         //回傳按鍵狀態
-        public KeyStates GetKeyMode()
+        public KeyStates GetKeyState()
         {
-            return _keyMode;
+            return _keyState;
         }
     }
 }

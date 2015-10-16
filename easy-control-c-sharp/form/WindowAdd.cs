@@ -52,7 +52,7 @@ namespace easy_control_c_sharp
         }
 
         //取得軟體的名子
-        public string GetModeName()
+        public string GetWindowName()
         {
             return _nameTextBox.Text.ToString();
         }
