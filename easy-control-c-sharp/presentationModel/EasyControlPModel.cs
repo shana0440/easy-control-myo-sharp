@@ -130,10 +130,7 @@ namespace easy_control_c_sharp
 
         public void ProcessAddForm(WindowAdd windowAddForm)
         {
-            DialogResult result = windowAddForm.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {
-            }
+            windowAddForm.ShowDialog();
         }
 
         public void ProcessWindowGridViewCellFormatting(int columnIndex, DataGridView windowGridView)

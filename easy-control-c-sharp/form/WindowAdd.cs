@@ -57,18 +57,6 @@ namespace easy_control_c_sharp
             CheckSaveButton();
         }
 
-        //取得軟體的名子
-        public string GetWindowName()
-        {
-            return _nameTextBox.Text.ToString();
-        }
-
-        //取得軟體的圖片
-        public string GetImageFile()
-        {
-            return _imageTextBox.Text.ToString();
-        }
-
         //是否啟用SaveButton
         private void CheckSaveButton()
         {
