@@ -133,14 +133,6 @@ namespace easy_control_c_sharp
             DialogResult result = windowAddForm.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                string windowName = windowAddForm.GetWindowName();
-                string[] fileName = windowAddForm.GetImageFile().Split('\\');
-                string ownImagePath = "Image/" + fileName[fileName.Length - 1];
-                if (!File.Exists(ownImagePath))
-                    File.Copy(windowAddForm.GetImageFile(), ownImagePath);
-                // if mode is exist, must pop alert
-                Window window = AddWindow(windowAddForm.GetWindowName());
-                window.SetImage(ownImagePath);
             }
         }
 
