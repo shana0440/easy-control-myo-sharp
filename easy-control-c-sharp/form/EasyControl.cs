@@ -77,9 +77,10 @@ namespace easy_control_c_sharp
         }
 
         //點擊軟體GridView事件
-        private void ModeGridViewCellClick(object sender, DataGridViewCellEventArgs e)
+        private void ClickWindowGridViewCell(object sender, DataGridViewCellEventArgs e)
         {
             _presentationModel.ProcessWindowGridViewCell(e.RowIndex, e.ColumnIndex);
+            _windowGridView.Refresh();
         }
 
         //新增軟體button click事件
