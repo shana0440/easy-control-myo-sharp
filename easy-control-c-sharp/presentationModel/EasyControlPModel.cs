@@ -53,7 +53,6 @@ namespace easy_control_c_sharp
             {
                 Window window = GetWindowByIndex(rowIndex);
                 WindowDetail detailForm = new WindowDetail(this, window);
-                Console.WriteLine(columnIndex);
                 switch (columnIndex)
                 {
                     // this is delete button, we add delete columns first, then format binding columns
