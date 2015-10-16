@@ -47,7 +47,7 @@ namespace easy_control_c_sharp
         //按下link按鈕，選擇圖片
         private void ClickLinkButton(object sender, EventArgs e)
         {
-            _imageTextBox.Text = _presentationModel.ProcessOpenFile();
+            _imageTextBox.Text = _presentationModel.ProcessOpenFile(_imageTextBox.Text);
             CheckSaveButton();
         }
 
