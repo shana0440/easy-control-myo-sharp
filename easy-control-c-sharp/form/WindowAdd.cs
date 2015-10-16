@@ -34,11 +34,7 @@ namespace easy_control_c_sharp
         //按下Save按鈕，視窗關閉
         private void ClickSaveButton(object sender, EventArgs e)
         {
-            if (_isEdit)
-            {
-                _window.Name = _nameTextBox.Text.ToString();
-                _window.SetImage(_imageTextBox.Text.ToString());
-            }
+            _presentationModel.ProcessClickSaveButton(_window, _isEdit, _nameTextBox.Text.ToString(), _imageTextBox.Text.ToString());
             Close();
         }
 
