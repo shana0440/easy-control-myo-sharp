@@ -60,7 +60,6 @@ namespace easy_control_c_sharp
                     case 0:
                         CloseWindowDetailForm(window);
                         RemoveWindow(window);
-                        RemoveImage(window.Name);
                         break;
 
                     case 1:

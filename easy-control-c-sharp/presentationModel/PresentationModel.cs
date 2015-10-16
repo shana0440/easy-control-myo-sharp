@@ -254,11 +254,6 @@ namespace easy_control_c_sharp
             return UIBitmap;
         }
 
-        public void RemoveImage(string name)
-        {
-            _imageList.Remove(name);
-        }
-
         //檢查是否有某圖片存在
         public bool IsImageExist(string name)
         {
