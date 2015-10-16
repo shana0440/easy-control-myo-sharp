@@ -16,16 +16,48 @@ namespace easy_control_c_sharp
         private Window _focusWindow;
 
         /**
-         * 加入手勢組合
+         * 加入操縱軟體
          */
         public void AddWindow(Window window)
         {
             _windowList.Add(window);
         }
 
+        /**
+         * 刪除操縱軟體
+         */
+        public void RemoveWindow(Window window)
+        {
+            _windowList.Remove(window);
+        }
+
         public void SetFocusWindow(string name)
         {
             _focusWindow = _windowList.FirstOrDefault(item => name.ToLower().IndexOf(item.Name.ToLower()) != -1);
+        }
+
+        /**
+         * 回傳所有已加入的軟體
+         */
+        public BindingList<Window> GetWindowList()
+        {
+            return _windowList;
+        }
+
+        /**
+         * 回傳某軟體
+         */
+        public Window GetWindowByIndex(int index)
+        {
+            return _windowList[index];
+        }
+
+        /**
+         * 回傳軟體數量
+         */
+        public int GetWindowLength()
+        {
+            return _windowList.Count;
         }
 
         /**

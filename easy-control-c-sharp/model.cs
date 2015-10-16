@@ -9,7 +9,6 @@ namespace easy_control_c_sharp
 {
     public class Model
     {
-        private BindingList<Window> _windowList = new BindingList<Window>();
         private PoseManager _poseManager = new PoseManager();
         private MyoController _myoController;
         public Model()
@@ -21,7 +20,6 @@ namespace easy_control_c_sharp
         public Window AddWindow(string name)
         {
             Window window = new Window(name);
-            _windowList.Add(window);
             _poseManager.AddWindow(window);
             return window;
         }
@@ -29,37 +27,24 @@ namespace easy_control_c_sharp
         //回傳所有已加入的軟體
         public BindingList<Window> GetWindowList()
         {
-            return _windowList;
+            return _poseManager.GetWindowList();
         }
         
         //回傳軟體數量
         public int GetWindowLength()
         {
-            return _windowList.Count;
+            return _poseManager.GetWindowLength();
         }
         
         //刪除操縱軟體
         public void RemoveWindow(Window window)
         {
-            _windowList.Remove(window);
-        }
-
-        public int GetWindowIndex(Window window)
-        {
-            int index = -1;
-            for (index = 0; index < _windowList.Count; index++)
-            {
-                if (_windowList[index] == window)
-                {
-                    break;
-                }
-            }
-            return index;
+            _poseManager.RemoveWindow(window);
         }
 
         public Window GetWindowByIndex(int index)
         {
-            return _windowList[index];
+            return _poseManager.GetWindowByIndex(index);
         }
 
         public void LockMyo()
