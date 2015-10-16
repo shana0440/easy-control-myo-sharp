@@ -53,7 +53,6 @@ namespace easy_control_c_sharp
             {
                 Window window = GetWindowByIndex(rowIndex);
                 WindowDetail detailForm = new WindowDetail(this, window);
-                detailForm.Text = window.Name;
                 Console.WriteLine(columnIndex);
                 switch (columnIndex)
                 {
@@ -66,7 +65,11 @@ namespace easy_control_c_sharp
                         break;
 
                     case 1:
-
+                        Form openedForm = ExistForm(window);
+                        WindowAdd windowAddForm = new WindowAdd(this, window);
+                        windowAddForm.ShowDialog();
+                        if(openedForm != null)
+                            openedForm.Refresh();
                         break;
 
                     case 4:
