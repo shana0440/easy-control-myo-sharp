@@ -80,7 +80,7 @@
             this._windowGridView.RowTemplate.Height = 50;
             this._windowGridView.Size = new System.Drawing.Size(341, 410);
             this._windowGridView.TabIndex = 6;
-            this._windowGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModeGridViewCellClick);
+            this._windowGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickWindowGridViewCell);
             this._windowGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ModeGridViewCellFormatting);
             // 
             // _addButton
