@@ -12,18 +12,16 @@ namespace easy_control_c_sharp
         public void ProcessClickSaveButton(Window window, bool isEdit, string windowName, string windowImage)
         {
             if (isEdit)
-            {
                 window.Name = windowName;
-                window.SetImage(windowImage);
-            }
             else
-            {
                 window = AddWindow(windowName);
+            if (windowImage == "")
+                window.SetImage("Image/Myo.png");
+            else
                 window.SetImage(windowImage);
-            }
         }
 
-        public string ProcessOpenFile()
+        public string ProcessOpenFile(string imagePath)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "讀取圖片";
@@ -34,9 +32,9 @@ namespace easy_control_c_sharp
                 string ownImagePath = "Image/" + fileName[fileName.Length - 1];
                 if (!File.Exists(ownImagePath))
                     File.Copy(dialog.FileName, ownImagePath);
-                return dialog.FileName;
+                return ownImagePath;
             }
-            return "";
+            return imagePath;
         }
 
         public bool IsSaveButtonEnable(TextBox nameTextBox)
