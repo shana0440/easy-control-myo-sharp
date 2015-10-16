@@ -94,7 +94,13 @@ namespace easy_control_c_sharp
         {
             get
             {
-                Bitmap UIBitmap = new Bitmap(Image.FromFile(_imagePath), 50, 50);
+                Bitmap UIBitmap;
+                // make sure image resource just in this scope
+                // when using over, then image resource while be release
+                using (Image image = Image.FromFile(_imagePath))
+                {
+                    UIBitmap = new Bitmap(image, 50, 50);
+                }
                 return UIBitmap;
             }
         }
