@@ -77,6 +77,7 @@
             this._saveButton.TabIndex = 3;
             this._saveButton.Text = "Save";
             this._saveButton.UseVisualStyleBackColor = true;
+            this._saveButton.Click += new System.EventHandler(this.ClickSaveButton);
             // 
             // _nameTextBox
             // 
