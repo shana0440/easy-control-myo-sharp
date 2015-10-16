@@ -25,11 +25,11 @@ namespace easy_control_c_sharp
         public void ProcessPosePictureBoxPaint(Graphics graphics, PoseCombination poseCombination)
         {
             if (poseCombination.GetPoseLength() != 0)
-                graphics.DrawImage(GetImage(poseCombination.GetPose(0), 75, 75), 10, 260);
+                graphics.DrawImage(GetImage(poseCombination.GetPose(0), 75, 75), 30, 260);
             for (int i = 1; i < poseCombination.GetPoseLength(); i++)
             {
-                graphics.DrawString("+", new Font("微軟正黑體", 30), Brushes.SkyBlue, 110 * i - 25, 275);
-                graphics.DrawImage(GetImage(poseCombination.GetPose(i), 75, 75), 10 + 110 * i, 260);
+                graphics.DrawString("+", new Font("微軟正黑體", 30), Brushes.SkyBlue, 110 * i - 10, 265);
+                graphics.DrawImage(GetImage(poseCombination.GetPose(i), 75, 75), 30 + 110 * i, 260);
             }
         }
 

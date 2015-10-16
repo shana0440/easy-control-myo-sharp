@@ -51,17 +51,17 @@ namespace easy_control_c_sharp
         {
             Graphics graphics = e.Graphics;
             graphics.DrawString("◈ 起始手勢", new Font("微軟正黑體", 15), Brushes.Black, 5, 3);
-            graphics.DrawImage(_presentationModel.GetImage("fingersSpread", 75, 75), 10, 35);
-            graphics.DrawImage(_presentationModel.GetImage("waveOut", 75, 75), 105, 35);
-            graphics.DrawImage(_presentationModel.GetImage("waveIn", 75, 75), 200, 35);
-            graphics.DrawImage(_presentationModel.GetImage("fist", 75, 75), 295, 35);
+            graphics.DrawImage(_presentationModel.GetImage("fingersSpread", 75, 75), 30, 35);
+            graphics.DrawImage(_presentationModel.GetImage("waveOut", 75, 75), 125, 35);
+            graphics.DrawImage(_presentationModel.GetImage("waveIn", 75, 75), 220, 35);
+            graphics.DrawImage(_presentationModel.GetImage("fist", 75, 75), 315, 35);
             graphics.DrawString("◈ 手臂運動", new Font("微軟正黑體", 15), Brushes.Black, 5, 114);
-            graphics.DrawImage(_presentationModel.GetImage("rollUp", 75, 75), 10, 150);
-            graphics.DrawImage(_presentationModel.GetImage("rollDown", 75, 75), 95, 150);
-            graphics.DrawImage(_presentationModel.GetImage("pitchUp", 75, 75), 180, 150);
-            graphics.DrawImage(_presentationModel.GetImage("pitchDown", 75, 75), 265, 150);
-            graphics.DrawImage(_presentationModel.GetImage("yawUp", 75, 75), 350, 150);
-            graphics.DrawImage(_presentationModel.GetImage("yawDown", 75, 75), 435, 150);
+            graphics.DrawImage(_presentationModel.GetImage("rollUp", 75, 75), 30, 150);
+            graphics.DrawImage(_presentationModel.GetImage("rollDown", 75, 75), 115, 150);
+            graphics.DrawImage(_presentationModel.GetImage("pitchUp", 75, 75), 200, 150);
+            graphics.DrawImage(_presentationModel.GetImage("pitchDown", 75, 75), 285, 150);
+            graphics.DrawImage(_presentationModel.GetImage("yawUp", 75, 75), 370, 150);
+            graphics.DrawImage(_presentationModel.GetImage("yawDown", 75, 75), 455, 150);
             graphics.DrawString("◈ 手勢組合", new Font("微軟正黑體", 15), Brushes.Black, 5, 225);
             _presentationModel.ProcessPosePictureBoxPaint(graphics, _poseCombination);
             graphics.DrawString("◈ 持續觸發功能", new Font("微軟正黑體", 15), Brushes.Black, 5, 340);
