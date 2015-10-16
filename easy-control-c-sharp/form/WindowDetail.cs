@@ -21,6 +21,7 @@ namespace easy_control_c_sharp
             _modePictureBox.Invalidate();
             BindingSource source = new BindingSource(window.GetPoseCollection(), null);
             _poseCombinationGridView.DataSource = source;
+            Text = window.Name;
             InitializeGridView();
         }
         
@@ -45,6 +46,7 @@ namespace easy_control_c_sharp
         //modePictureBox重畫
         private void WindowPictureBoxOnPaint(object sender, PaintEventArgs e)
         {
+            Text = _window.Name;
             e.Graphics.DrawImage(_window.GetImage, 0, 0);
             e.Graphics.DrawString(_window.Name, new Font("微軟正黑體", 25), Brushes.Black, 60, 8);
         }
