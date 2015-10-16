@@ -40,6 +40,7 @@ namespace easy_control_c_sharp
         public void RemoveWindow(Window window)
         {
             _poseManager.RemoveWindow(window);
+            window.RemoveImage();
         }
 
         public Window GetWindowByIndex(int index)

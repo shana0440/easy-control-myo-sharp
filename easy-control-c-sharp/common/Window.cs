@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace easy_control_c_sharp
 {
@@ -78,6 +79,14 @@ namespace easy_control_c_sharp
         public string GetImagePath()
         {
             return _imagePath;
+        }
+
+        public void RemoveImage()
+        {   
+            if (File.Exists(_imagePath))
+            {
+                File.Delete(_imagePath);
+            }
         }
 
         // let binding source can read this property
