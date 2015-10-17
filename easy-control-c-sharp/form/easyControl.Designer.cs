@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EasyControl));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._windowGridView = new System.Windows.Forms.DataGridView();
@@ -72,11 +72,11 @@
             this._windowGridView.Name = "_windowGridView";
             this._windowGridView.ReadOnly = true;
             this._windowGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this._windowGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this._windowGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this._windowGridView.RowTemplate.Height = 50;
             this._windowGridView.Size = new System.Drawing.Size(341, 410);
             this._windowGridView.TabIndex = 6;
@@ -132,6 +132,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(347, 446);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EasyControl";
             this.Text = "easyControl";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseForm);
