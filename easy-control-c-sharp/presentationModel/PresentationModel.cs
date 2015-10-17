@@ -266,7 +266,11 @@ namespace easy_control_c_sharp
         public void easyControlSave(string file)
         {
             if (_model.GetWindowLength() == 0)
+            {
+                if (File.Exists(file))
+                    File.Delete(file);
                 return;
+            }
             XmlDocument save = new XmlDocument();
             XmlElement easy_control = save.CreateElement("easy-control");
             save.AppendChild(easy_control);
