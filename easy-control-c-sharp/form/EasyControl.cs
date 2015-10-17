@@ -46,6 +46,7 @@ namespace easy_control_c_sharp
         private void ClickMenuStripClose(object sender, EventArgs e)
         {
             _presentationModel.easyControlSave("Save.xml");
+            _notifyIcon.Visible = false;
             Close();
         }
 
@@ -99,6 +100,7 @@ namespace easy_control_c_sharp
         {
             _presentationModel.easyControlSave("Save.xml");
             _presentationModel.LockMyo();
+            _notifyIcon.Visible = false;
         }
     }
 }

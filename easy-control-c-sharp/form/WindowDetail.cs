@@ -48,7 +48,7 @@ namespace easy_control_c_sharp
         {
             Text = _window.Name;
             e.Graphics.DrawImage(_window.GetImage, 0, 0);
-            e.Graphics.DrawString(_window.Name, new Font("微軟正黑體", 25), Brushes.Black, 60, 8);
+            e.Graphics.DrawString(_window.Name, new Font("微軟正黑體", 25), Brushes.Black, 60, 5);
         }
 
         //新增手勢配對button click事件

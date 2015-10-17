@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WindowDetail));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._addPoseCombinationButton = new System.Windows.Forms.Button();
             this._poseCombinationGridView = new System.Windows.Forms.DataGridView();
@@ -89,6 +90,7 @@
             this._poseCombinationGridView.ReadOnly = true;
             this._poseCombinationGridView.RowHeadersVisible = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 11.25F);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this._poseCombinationGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
@@ -115,6 +117,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(407, 407);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WindowDetail";
             this.Text = "ModeDetail";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WindowDetailFormClosed);

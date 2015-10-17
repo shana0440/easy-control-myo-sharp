@@ -79,9 +79,7 @@ namespace easy_control_c_sharp
             foreach (Rectangle keyRect in _keyBoard.Keys)
             {
                 if (keyRect.Contains(locationX, locationY))
-                {
-                    OpenForm(_keyBoard[keyRect], poseCombination);
-                }
+                    OpenForm(new Key(_keyBoard[keyRect].Code, _keyBoard[keyRect].State), poseCombination);
             }
         }
 

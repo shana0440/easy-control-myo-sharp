@@ -146,6 +146,8 @@ namespace easy_control_c_sharp
             _keyMap.Add("Down", VirtualKeyCode.DOWN);
             _keyMap.Add("Right", VirtualKeyCode.RIGHT);
             _keyMap.Add("Menu", VirtualKeyCode.MENU); //VirtualKeyCode不確定，先暫定MENU
+            _keyMap.Add("Volumn Down", VirtualKeyCode.VOLUME_DOWN);
+            _keyMap.Add("Volumn Up", VirtualKeyCode.VOLUME_UP);
 
             //鍵盤第一列
             _keyBoard.Add(new Rectangle(0, 3, 37, 32), new Key(VirtualKeyCode.ESCAPE, KeyStates.None));
@@ -223,6 +225,8 @@ namespace easy_control_c_sharp
             _keyBoard.Add(new Rectangle(463, 138, 37, 35), new Key(VirtualKeyCode.DOWN, KeyStates.None));
             _keyBoard.Add(new Rectangle(500, 138, 37, 35), new Key(VirtualKeyCode.RIGHT, KeyStates.None));
             _keyBoard.Add(new Rectangle(537, 138, 37, 35), new Key(VirtualKeyCode.MENU, KeyStates.None)); //VirtualKeyCode不確定，先暫定MENU
+            _keyBoard.Add(new Rectangle(575, 138, 33, 35), new Key(VirtualKeyCode.VOLUME_DOWN, KeyStates.None));
+            _keyBoard.Add(new Rectangle(609, 138, 33, 35), new Key(VirtualKeyCode.VOLUME_UP, KeyStates.None));
         }
 
         // Image method
@@ -262,7 +266,11 @@ namespace easy_control_c_sharp
         public void easyControlSave(string file)
         {
             if (_model.GetWindowLength() == 0)
+            {
+                if (File.Exists(file))
+                    File.Delete(file);
                 return;
+            }
             XmlDocument save = new XmlDocument();
             XmlElement easy_control = save.CreateElement("easy-control");
             save.AppendChild(easy_control);
