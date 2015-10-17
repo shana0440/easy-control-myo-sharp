@@ -102,7 +102,9 @@
             this.Controls.Add(this._posePictureBox);
             this.Controls.Add(this._okButton);
             this.Controls.Add(this._keyPictureBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "PoseCombinationSelect";
             this.Text = "PoseCombinationSelect";
             ((System.ComponentModel.ISupportInitialize)(this._keyPictureBox)).EndInit();
