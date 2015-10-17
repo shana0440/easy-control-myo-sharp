@@ -43,8 +43,8 @@ namespace easy_control_c_sharp
             {
                 new Tuple<string, Rectangle>("rollUp", new Rectangle(0, 0, 230, 230)),
                 new Tuple<string, Rectangle>("rollDown", new Rectangle(182, 0, 230, 230)),
-                new Tuple<string, Rectangle>("pitchUp", new Rectangle(0, 182, 230, 230)),
-                new Tuple<string, Rectangle>("pitchDown", new Rectangle(180, 180, 230, 230)),
+                new Tuple<string, Rectangle>("pitchDown", new Rectangle(0, 182, 230, 230)),
+                new Tuple<string, Rectangle>("pitchUp", new Rectangle(180, 180, 230, 230)),
                 new Tuple<string, Rectangle>("yawUp", new Rectangle(0, 360, 230, 230)),
                 new Tuple<string, Rectangle>("yawDown", new Rectangle(182, 360, 230, 230)),
             };
