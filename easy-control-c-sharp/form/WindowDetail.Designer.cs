@@ -89,6 +89,7 @@
             this._poseCombinationGridView.ReadOnly = true;
             this._poseCombinationGridView.RowHeadersVisible = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 11.25F);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this._poseCombinationGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
