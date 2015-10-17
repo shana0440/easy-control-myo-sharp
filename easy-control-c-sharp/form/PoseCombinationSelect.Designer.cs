@@ -47,6 +47,7 @@
             this._keyPictureBox.TabStop = false;
             this._keyPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.KeyPictureBoxOnPaint);
             this._keyPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickKeyPictureBox);
+            this._keyPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveMouseInKeyPictureBox);
             // 
             // _okButton
             // 
@@ -69,6 +70,7 @@
             this._posePictureBox.TabStop = false;
             this._posePictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.PosePictureBoxOnPaint);
             this._posePictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickPosePictureBox);
+            this._posePictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveMouseInPosePictureBox);
             // 
             // _cancelButton
             // 
