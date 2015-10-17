@@ -127,5 +127,15 @@ namespace easy_control_c_sharp
         {
             Close();
         }
+
+        private void MoveMouseInPosePictureBox(object sender, MouseEventArgs e)
+        {
+            _presentationModel.ChangeMouseInPictureBox(_poseCombination, e.X, e.Y);
+        }
+
+        private void MoveMouseInKeyPictureBox(object sender, MouseEventArgs e)
+        {
+            Cursor.Current = Cursors.Hand;
+        }
     }
 }

@@ -59,17 +59,17 @@ namespace easy_control_c_sharp
         private void InitializePoseKeyDictionary()
         {
             //起始手勢
-            _poseBoard.Add(new Rectangle(10, 35, 75, 75), "fingersSpread");
-            _poseBoard.Add(new Rectangle(105, 35, 75, 75), "waveOut");
-            _poseBoard.Add(new Rectangle(200, 35, 75, 75), "waveIn");
-            _poseBoard.Add(new Rectangle(295, 35, 75, 75), "fist");
+            _poseBoard.Add(new Rectangle(30, 35, 75, 75), "fingersSpread");
+            _poseBoard.Add(new Rectangle(125, 35, 75, 75), "waveOut");
+            _poseBoard.Add(new Rectangle(220, 35, 75, 75), "waveIn");
+            _poseBoard.Add(new Rectangle(315, 35, 75, 75), "fist");
             //手臂運動
-            _poseBoard.Add(new Rectangle(10, 150, 75, 75), "rollUp");
-            _poseBoard.Add(new Rectangle(95, 150, 75, 75), "rollDown");
-            _poseBoard.Add(new Rectangle(180, 150, 75, 75), "pitchUp");
-            _poseBoard.Add(new Rectangle(265, 150, 75, 75), "pitchDown");
-            _poseBoard.Add(new Rectangle(350, 150, 75, 75), "yawUp");
-            _poseBoard.Add(new Rectangle(435, 150, 75, 75), "yawDown");
+            _poseBoard.Add(new Rectangle(30, 150, 75, 75), "rollUp");
+            _poseBoard.Add(new Rectangle(115, 150, 75, 75), "rollDown");
+            _poseBoard.Add(new Rectangle(200, 150, 75, 75), "pitchUp");
+            _poseBoard.Add(new Rectangle(285, 150, 75, 75), "pitchDown");
+            _poseBoard.Add(new Rectangle(370, 150, 75, 75), "yawUp");
+            _poseBoard.Add(new Rectangle(455, 150, 75, 75), "yawDown");
             //鍵盤第一列
             _keyMap.Add("Esc", VirtualKeyCode.ESCAPE);
             _keyMap.Add("`", VirtualKeyCode.OEM_3);

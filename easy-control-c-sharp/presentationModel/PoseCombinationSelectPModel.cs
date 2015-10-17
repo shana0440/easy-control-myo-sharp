@@ -68,7 +68,7 @@ namespace easy_control_c_sharp
             }
             for (int i = 0; i < poseCombination.GetPoseLength(); i++)
             {
-                Rectangle select = new Rectangle(10 + 110 * i, 260, 75, 75);
+                Rectangle select = new Rectangle(30 + 110 * i, 260, 75, 75);
                 if (select.Contains(locationX, locationY))
                     poseCombination.RemovePose(i);
             }
@@ -149,6 +149,21 @@ namespace easy_control_c_sharp
             }
             else
                 window.AddPoseCombination(poseCombination);
+        }
+
+        public void ChangeMouseInPictureBox(PoseCombination poseCombination, int mouseLocationX, int mouseLocationXY)
+        {
+            foreach (Rectangle section in _poseBoard.Keys)
+            {
+                if (section.Contains(mouseLocationX, mouseLocationXY))
+                    Cursor.Current = Cursors.Hand;
+            }
+            for (int i = 0; i < poseCombination.GetPoseLength(); i++)
+            {
+                Rectangle select = new Rectangle(30 + 110 * i, 260, 75, 75);
+                if (select.Contains(mouseLocationX, mouseLocationXY))
+                    Cursor.Current = Cursors.Hand;
+            }
         }
     }
 }
