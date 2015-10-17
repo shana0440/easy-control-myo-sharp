@@ -98,7 +98,8 @@ namespace easy_control_c_sharp
             {
                 if (item.IsCompleted)
                 {
-                    item.DoAction();
+                    if (!item.IsContinue)
+                        item.DoAction();
                     actionDown = true;
                     break;
                 }
