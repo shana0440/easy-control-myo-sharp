@@ -262,6 +262,13 @@ namespace easy_control_c_sharp
             return _imageList.ContainsKey(name);
         }
 
+        public void MoveMouseInDataGridView(int mouseLocationX, int mouseLocationY, int dataGridViewWidth, int rowDataCount)
+        {
+            Rectangle section = new Rectangle(0, 20, dataGridViewWidth, rowDataCount * 50);
+            if (section.Contains(mouseLocationX, mouseLocationY))
+                Cursor.Current = Cursors.Hand;
+        }
+
         //存檔處理
         public void easyControlSave(string file)
         {
