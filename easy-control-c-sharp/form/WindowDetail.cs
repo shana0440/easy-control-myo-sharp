@@ -74,5 +74,10 @@ namespace easy_control_c_sharp
         {
             _presentationModel.ProcessPoseCombinationGridViewCellFormatting(e.ColumnIndex, _poseCombinationGridView);
         }
+
+        private void MoveMouseInPoseCombinationGridView(object sender, MouseEventArgs e)
+        {
+            _presentationModel.MoveMouseInDataGridView(e.X, e.Y, _poseCombinationGridView.Width, _window.GetPoseCollection().Count);
+        }
     }
 }
