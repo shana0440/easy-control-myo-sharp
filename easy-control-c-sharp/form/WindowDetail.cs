@@ -47,7 +47,7 @@ namespace easy_control_c_sharp
         private void WindowPictureBoxOnPaint(object sender, PaintEventArgs e)
         {
             Text = _window.Name;
-            e.Graphics.DrawImage(_window.GetImage, 0, 0);
+            e.Graphics.DrawImage(_window.GetImage, 0, 4);
             e.Graphics.DrawString(_window.Name, new Font("微軟正黑體", 25), Brushes.Black, 60, 5);
         }
 
