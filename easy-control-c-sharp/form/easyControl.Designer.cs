@@ -82,6 +82,7 @@
             this._windowGridView.TabIndex = 6;
             this._windowGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickWindowGridViewCell);
             this._windowGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ModeGridViewCellFormatting);
+            this._windowGridView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveMouseInWindowGridView);
             // 
             // _addButton
             // 
