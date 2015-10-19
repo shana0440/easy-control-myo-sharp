@@ -87,6 +87,24 @@ namespace easy_control_c_sharp
             return new int[3] { rollOffset, pitchOffset, yawOffset };
         }
 
+        public int GetDirOffset()
+        {
+            string dir = GetArmDirection();
+            int[] offset = GetQuatOffset();
+            if (dir == "")
+                return 0;
+
+            dir = dir.Substring(0, 1);
+            if (dir == "r")
+                return offset[0];
+            else if (dir == "p")
+                return offset[1];
+            else if (dir == "y")
+                return offset[2];
+
+            return 0;
+        }
+
         public void ClearBuffer()
         {
             _buffer[_strRoll].Clear();
