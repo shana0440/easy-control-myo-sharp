@@ -9,6 +9,7 @@ using MyoSharp.Device;
 using MyoSharp.Exceptions;
 using System.Runtime.InteropServices; // use DllImport
 using WindowsInput;
+using System.Timers;
 
 namespace easy_control_c_sharp
 {
@@ -20,10 +21,14 @@ namespace easy_control_c_sharp
         private bool _isLock = false;
         private PoseManager _poseManager;
         private Orientation _orientation = new Orientation();
+        private Timer _timer = new Timer();
+        private string _currentPose;
         
         public MyoController(PoseManager poseManager)
         {
             _poseManager = poseManager;
+            _timer.Interval = 100;
+            _timer.Elapsed += OnTimedEvent;
             try
             {
                 _myoChannel = Channel.Create(
@@ -42,6 +47,11 @@ namespace easy_control_c_sharp
             {
                 throw new Exception("Unable to find a Myo!");
             }
+        }
+
+        private void OnTimedEvent(object sender, ElapsedEventArgs e)
+        {
+            ReceivePose(_currentPose);
         }
 
         private void MyoConnected(object sender, MyoEventArgs e)
@@ -100,7 +110,8 @@ namespace easy_control_c_sharp
                 {
                     ReceiveStart();
                 }
-                ReceivePose(e.Pose.ToString());
+                _currentPose = e.Pose.ToString();
+                ReceivePose(_currentPose);
             }
         }
 
@@ -112,10 +123,15 @@ namespace easy_control_c_sharp
                 if (_orientation.BufferFull)
                 {
                     string dir = _orientation.GetArmDirection();
-                    _orientation.ClearBuffer();
-
                     if (dir != "")
-                        ReceivePose(dir);
+                        _currentPose = dir;
+                    //Console.WriteLine("offset {0}", _orientation.GetDirOffset());
+                    for (int i = 0; i < _orientation.GetDirOffset(); i++)
+                    {
+                        ReceivePose(_currentPose);
+                    }
+
+                    _orientation.ClearBuffer();
                 }
             }
         }
@@ -140,6 +156,7 @@ namespace easy_control_c_sharp
         public void ReceiveStart()
         {
             _onReceive = true;
+            _timer.Start();
             IntPtr selectedWindow = GetForegroundWindow();
             string selectedWindowTitle = GetWindowTitle(selectedWindow, IntPtr.Zero);
             _poseManager.SetFocusWindow(selectedWindowTitle);
@@ -150,6 +167,7 @@ namespace easy_control_c_sharp
         public void ReceiveOver()
         {
             _onReceive = false;
+            _timer.Stop();
             _poseManager.ReceiveOver();
             _orientation.ClearBuffer();
             Console.WriteLine("Receive over!");
