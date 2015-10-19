@@ -80,6 +80,11 @@ namespace easy_control_c_sharp
                     }
                     afterFilterPoseCollection.Add(item);
                 }
+                else
+                {
+                    // reset poseCombination if pose isnot conform
+                    item.Reset();
+                }
                 if (item.IsCompleted)
                 {
                     hasCompleted = true;
@@ -108,6 +113,7 @@ namespace easy_control_c_sharp
             {
                 Console.WriteLine("No pose combination conform!");
             }
+            // make sure ever item is reset
             foreach (PoseCombination item in _filter)
             {
                 item.Reset();
