@@ -126,11 +126,6 @@ namespace easy_control_c_sharp
                     string dir = _orientation.GetArmDirection();
                     if (dir != "")
                         _currentPose = dir;
-                    //Console.WriteLine("offset {0}", _orientation.GetDirOffset());
-                    for (int i = 0; i < _orientation.GetDirOffset(); i++)
-                    {
-                        ReceivePose(_currentPose);
-                    }
 
                     _orientation.ClearBuffer();
                 }
