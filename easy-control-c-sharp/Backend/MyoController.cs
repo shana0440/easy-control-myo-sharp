@@ -79,14 +79,15 @@ namespace easy_control_c_sharp
 
         private void OnLocked(object sender, MyoEventArgs e)
         {
+            e.Myo.Lock();
             _isLock = true;
             Console.WriteLine("Myo Locked");
         }
 
         private void OnUnlocked(object sender, MyoEventArgs e)
         {
-            _isLock = false;
             e.Myo.Unlock(UnlockType.Hold);
+            _isLock = false;
             Console.WriteLine("Myo UnLocked");
         }
 
@@ -148,8 +149,8 @@ namespace easy_control_c_sharp
         {
             if (_onReceive)
             {
-                _poseManager.FilterPose(pose);
                 Console.WriteLine("Detected {0} pose!", pose);
+                _poseManager.FilterPose(pose);
             }
         }
 
