@@ -156,21 +156,38 @@ namespace easy_control_c_sharp
             if (IsPreviousPose(pose))
             {
                 accord = true;
+                // 判斷手勢是否完成
+                // 避免持續性手勢在已完成的情況下沒有判斷到
+                _isComplete = CheckIsCompleted();
             }
             else if (IsReadyContiuePose())
             {
                 // 連貫性的手勢，可能是最後一個手勢尚未符合或已經符合
                 // 符合以上條件就須留在filter中
+                // 將_index固定在最後一個手勢，針對最後一個手勢做判斷
                 _index = _poseCombination.Count - 1;
-                IsNewPose(pose);
+                if (IsNewPose(pose))
+                {
+                    _index++;
+                    _isComplete = CheckIsCompleted();
+                }
                 accord = true;
+            }
+            else if (accord = IsNewPose(pose))
+            {
+                _index++; // start with 0
+                _isComplete = CheckIsCompleted();
             }
             else
             {
-                accord = IsNewPose(pose);
+                
             }
-            
             return accord;
+        }
+
+        private bool CheckIsCompleted()
+        {
+            return _index >= _poseCombination.Count;
         }
 
         /**
@@ -199,11 +216,6 @@ namespace easy_control_c_sharp
                 // 為新的手勢
                 if (pose.ToLower() == _poseCombination[_index].ToLower())
                 {
-                    _index++; // start with 0
-                    if (_index >= _poseCombination.Count)
-                    {
-                        _isComplete = true;
-                    }
                     return true;
                 }
                 // 沒有符合的手勢
