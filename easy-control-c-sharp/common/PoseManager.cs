@@ -77,6 +77,7 @@ namespace easy_control_c_sharp
                     {
                         item.DoAction();
                         item.IsCompleted = false;
+                        hasCompleted = true;
                     }
                     afterFilterPoseCollection.Add(item);
                 }
@@ -85,7 +86,7 @@ namespace easy_control_c_sharp
                     // reset poseCombination if pose isnot conform
                     item.Reset();
                 }
-                if (item.IsCompleted)
+                if (item.IsCompleted && !hasCompleted)
                 {
                     hasCompleted = true;
                 }
