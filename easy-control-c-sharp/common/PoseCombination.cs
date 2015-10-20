@@ -250,7 +250,7 @@ namespace easy_control_c_sharp
                     case KeyStates.Press:
                     case KeyStates.Hold:
                         InputSimulator.SimulateKeyDown(code);
-                        Console.WriteLine("Down {0} key", code.ToString());
+                        Console.WriteLine("Hold {0} key", code.ToString());
                         break;
                     default:
                         break;
@@ -266,7 +266,7 @@ namespace easy_control_c_sharp
                     case KeyStates.Press:
                     case KeyStates.Release:
                         InputSimulator.SimulateKeyUp(code);
-                        Console.WriteLine("Up {0} key", code.ToString());
+                        Console.WriteLine("Release {0} key", code.ToString());
                         break;
                     default:
                         break;
