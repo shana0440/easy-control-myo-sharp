@@ -41,8 +41,8 @@ namespace easy_control_c_sharp
             Bitmap source = new Bitmap("Image/arm-device.png");
             List<Tuple<string, Rectangle>> sectionList = new List<Tuple<string, Rectangle>>
             {
-                new Tuple<string, Rectangle>("rollUp", new Rectangle(0, 0, 230, 230)),
-                new Tuple<string, Rectangle>("rollDown", new Rectangle(182, 0, 230, 230)),
+                new Tuple<string, Rectangle>("rollDown", new Rectangle(0, 0, 230, 230)),
+                new Tuple<string, Rectangle>("rollUp", new Rectangle(182, 0, 230, 230)),
                 new Tuple<string, Rectangle>("pitchDown", new Rectangle(0, 182, 230, 230)),
                 new Tuple<string, Rectangle>("pitchUp", new Rectangle(180, 180, 230, 230)),
                 new Tuple<string, Rectangle>("yawUp", new Rectangle(0, 360, 230, 230)),
@@ -260,6 +260,13 @@ namespace easy_control_c_sharp
         public bool IsImageExist(string name)
         {
             return _imageList.ContainsKey(name);
+        }
+
+        public void MoveMouseInDataGridView(int mouseLocationX, int mouseLocationY, int dataGridViewWidth, int rowDataCount)
+        {
+            Rectangle section = new Rectangle(0, 20, dataGridViewWidth, rowDataCount * 50);
+            if (section.Contains(mouseLocationX, mouseLocationY))
+                Cursor.Current = Cursors.Hand;
         }
 
         //存檔處理

@@ -73,6 +73,8 @@
             // 
             this._poseCombinationGridView.AllowUserToAddRows = false;
             this._poseCombinationGridView.AllowUserToDeleteRows = false;
+            this._poseCombinationGridView.AllowUserToResizeColumns = false;
+            this._poseCombinationGridView.AllowUserToResizeRows = false;
             this._poseCombinationGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this._poseCombinationGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._poseCombinationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -100,6 +102,7 @@
             this._poseCombinationGridView.TabIndex = 16;
             this._poseCombinationGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PoseCombinationGridViewCellClick);
             this._poseCombinationGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.PoseCombinationGridViewCellFormatting);
+            this._poseCombinationGridView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveMouseInPoseCombinationGridView);
             // 
             // _modePictureBox
             // 

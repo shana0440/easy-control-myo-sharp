@@ -47,7 +47,7 @@ namespace easy_control_c_sharp
         private void WindowPictureBoxOnPaint(object sender, PaintEventArgs e)
         {
             Text = _window.Name;
-            e.Graphics.DrawImage(_window.GetImage, 0, 0);
+            e.Graphics.DrawImage(_window.GetImage, 0, 4);
             e.Graphics.DrawString(_window.Name, new Font("微軟正黑體", 25), Brushes.Black, 60, 5);
         }
 
@@ -73,6 +73,11 @@ namespace easy_control_c_sharp
         private void PoseCombinationGridViewCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             _presentationModel.ProcessPoseCombinationGridViewCellFormatting(e.ColumnIndex, _poseCombinationGridView);
+        }
+
+        private void MoveMouseInPoseCombinationGridView(object sender, MouseEventArgs e)
+        {
+            _presentationModel.MoveMouseInDataGridView(e.X, e.Y, _poseCombinationGridView.Width, _window.GetPoseCollection().Count);
         }
     }
 }

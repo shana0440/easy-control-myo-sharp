@@ -102,5 +102,10 @@ namespace easy_control_c_sharp
             _presentationModel.LockMyo();
             _notifyIcon.Visible = false;
         }
+
+        private void MoveMouseInWindowGridView(object sender, MouseEventArgs e)
+        {
+            _presentationModel.MoveMouseInDataGridView(e.X, e.Y, _windowGridView.Width, _presentationModel.GetWindowList().Count);
+        }
     }
 }
