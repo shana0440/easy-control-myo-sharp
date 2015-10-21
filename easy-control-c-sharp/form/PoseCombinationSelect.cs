@@ -118,8 +118,8 @@ namespace easy_control_c_sharp
         private void ClickOkButton(object sender, EventArgs e)
         {
             _poseCombination.GetImage = _presentationModel.GetPoseCombinationImage(_poseCombination, _keyPictureBox.Width, _keyPictureBox.Height);
-            _presentationModel.AddPoseCombination(_window, _poseCombination, _isEdit, _editIndex);
-            Close();
+            _presentationModel.AddPoseCombination(_window, _poseCombination, _isEdit, _editIndex, this);
+            //Close();
         }
 
         //按鈕事件(取消按鈕)

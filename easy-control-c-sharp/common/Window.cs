@@ -43,6 +43,32 @@ namespace easy_control_c_sharp
             _poseCollection.RemoveAt(index);
         }
 
+        public bool IsExistPoseCombination(PoseCombination poseCombination)
+        {
+            foreach (PoseCombination poses in _poseCollection)
+            {
+                if (poses.GetPoseList().SequenceEqual(poseCombination.GetPoseList()))
+                    return true;
+            }
+            return false;
+        }
+
+        public bool IsExistPoseCombinationEdit(PoseCombination poseCombination, int editIndex)
+        {
+            PoseCombination editPoseCombination = _poseCollection[editIndex];
+            _poseCollection.RemoveAt(editIndex);
+            foreach (PoseCombination poses in _poseCollection)
+            {
+                if (poses.GetPoseList().SequenceEqual(poseCombination.GetPoseList()))
+                {
+                    _poseCollection.Insert(editIndex, editPoseCombination);
+                    return true;
+                }
+            }
+            _poseCollection.Insert(editIndex, editPoseCombination);
+            return false;
+        }
+
         public PoseCombination GetPoseCombination(int index)
         {
             PoseCombination response = null;
@@ -83,7 +109,7 @@ namespace easy_control_c_sharp
 
         public void RemoveImage()
         {   
-            if (File.Exists(_imagePath))
+            if (File.Exists(_imagePath) && _imagePath != "Image/Myo.png")
             {
                 File.Delete(_imagePath);
             }

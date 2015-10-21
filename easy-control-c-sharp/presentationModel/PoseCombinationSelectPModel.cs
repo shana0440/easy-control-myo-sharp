@@ -140,15 +140,21 @@ namespace easy_control_c_sharp
             return canvas;
         }
 
-        public void AddPoseCombination(Window window, PoseCombination poseCombination, bool isEdit, int editIndex)
+        public void AddPoseCombination(Window window, PoseCombination poseCombination, bool isEdit, int editIndex, Form form)
         {
-            if (isEdit)
+            if (isEdit && !window.IsExistPoseCombinationEdit(poseCombination, editIndex))
             {
                 window.RemovePoseCombinationByIndex(editIndex);
                 window.InsertPoseCombination(editIndex, poseCombination);
+                form.Close();
+            }
+            else if (!isEdit && !window.IsExistPoseCombination(poseCombination))
+            {
+                window.AddPoseCombination(poseCombination);
+                form.Close();
             }
             else
-                window.AddPoseCombination(poseCombination);
+                MessageBox.Show("此手勢組合已選擇過", "警告", MessageBoxButtons.OK);
         }
 
         public void ChangeMouseInPictureBox(PoseCombination poseCombination, int mouseLocationX, int mouseLocationXY)
