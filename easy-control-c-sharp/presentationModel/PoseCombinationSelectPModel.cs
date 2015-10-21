@@ -154,7 +154,7 @@ namespace easy_control_c_sharp
                 form.Close();
             }
             else
-                MessageBox.Show("此手勢組合已選擇過", "警告", MessageBoxButtons.OK);
+                MessageBox.Show("此手勢組合已選擇過!!!", "警告", MessageBoxButtons.OK);
         }
 
         public void ChangeMouseInPictureBox(PoseCombination poseCombination, int mouseLocationX, int mouseLocationXY)
