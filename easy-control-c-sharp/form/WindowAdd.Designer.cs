@@ -120,7 +120,7 @@
             this.Controls.Add(this._nameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "WindowAdd";
-            this.Text = "ModeAdd";
+            this.Text = "WindowAdd";
             this.ResumeLayout(false);
             this.PerformLayout();
 
