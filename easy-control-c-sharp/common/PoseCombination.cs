@@ -280,6 +280,12 @@ namespace easy_control_c_sharp
             return _poseCombination[index];
         }
 
+        //取得手勢
+        public List<string> GetPoseList()
+        {
+            return _poseCombination;
+        }
+
         //取得功能鍵
         public Key GetKey(int index)
         {
