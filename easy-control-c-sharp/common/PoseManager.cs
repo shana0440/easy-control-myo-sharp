@@ -34,6 +34,10 @@ namespace easy_control_c_sharp
         public void SetFocusWindow(string name)
         {
             _focusWindow = _windowList.FirstOrDefault(item => name.ToLower().IndexOf(item.Name.ToLower()) != -1);
+            if (_focusWindow != null && !_focusWindow.IsEnable)
+            {
+                _focusWindow = null;
+            }
         }
 
         /**
