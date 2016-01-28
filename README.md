@@ -1,9 +1,5 @@
 # Easy Control (Myo)
 
-## TODO
-- remove image
-- try catch myo exception
-
 ## MyoSharp
 [github](https://github.com/tayfuzun/MyoSharp)
 
